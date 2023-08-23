@@ -1,0 +1,128 @@
+@font-face {
+    font-family: poppins_regular;
+    src: url(../assets/Poppins/Poppins-Regular.ttf);
+}
+
+@font-face {
+    font-family: poppins_light;
+    src: url(../assets/Poppins/Poppins-Light.ttf);
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+    font-family: poppins_regular;
+    text-decoration: none;
+}
+
+:root {
+    --primary: #6a994e;
+    --secondary: #427426;
+    --bg: #fdfffa;
+    --link-color: #427426;
+    --border-color: #dee2e6;
+    --border-radius: 0.25rem;
+    --button-text: #fff;
+    --button-focus: 0 0 0 3px rgba(121, 82, 179, 0.25);
+}
+*,
+::after,
+::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-size: 1rem;
+    line-height: 1.25;
+    background-color: var(--bg);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+main {
+    margin: 100px auto;
+    flex: 1;
+}
+form {
+    width: 400px;
+    margin: 0 auto;
+    border: solid 1px var(--border-color);
+    padding: 1rem;
+    border-radius: var(--border-radius);
+    background-color: var(--bg);
+}
+footer {
+    background-color: var(--bg);
+    border-top: 1px solid var(--border-color);
+    width: 100%;
+    margin-top: auto;
+}
+footer p {
+    text-align: center;
+    max-width: var(--max-width);
+    padding: 1rem 0;
+    margin: 0 auto;
+}
+a {
+    color: var(--link-color);
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: none;
+}
+button {
+    display: inline-block;
+    background: var(--primary);
+    border: 1px solid var(--primary);
+    font-size: 1em;
+    font-weight: 400;
+    text-align: center;
+    padding: 0.5em 0.75em;
+    min-width: 10ch;
+    text-decoration: none;
+}
+
+form h2 {
+    padding: 5px 0;
+    font-size: 1.4rem;
+    font-weight: 400;
+    text-align: center;
+    color: var(--text-bright);
+}
+form i {
+    margin-left: -30px;
+    cursor: pointer;
+}
+form p {
+    margin-bottom: 0.5rem;
+}
+
+form > footer {
+    text-align: center;
+    border-top: solid 1px var(--input-border-color);
+    padding: 0.5rem 0;
+    font-size: 0.8rem;
+}
+form > div {
+    margin-bottom: 0.75rem;
+}
+label {
+    display: inline-block;
+    margin-bottom: 5px;
+    vertical-align: top;
+    width: 100%;
+}
+input {
+    border: 1px solid var(--primary);
+    padding: 0.5rem 0.75rem;
+    width: 100%;
+    font-family: inherit;
+    font-size: 1rem;
+}
+
+form > button {
+    display: block;
+    width: 100%;
+    color: #ffffff;
+}
