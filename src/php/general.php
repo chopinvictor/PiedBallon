@@ -10,66 +10,52 @@
 <header>
 </header>
 <nav>
-	<div class="navigation">
-		<ul class="ul_nav">
-			<li>
-				<a href="../php/general.php">
-					<div class=" current nav_box">
-						<svg class="svg_icon">
-							<use class="svg_nav_all" xlink:href="#svg_setting" />
-						</svg>
-						<p>Général</p>
-					</div>
-				</a>
-			</li>
-			<li>
-				<a href="../php/participant.php">
-					<div class="nav_box">
-						<svg class="svg_icon">
-							<use class="svg_nav_all" xlink:href="#svg_participant" />
-						</svg>
-						<p>Participant</p>
-					</div>
-				</a>
-			</li>
-			<li>
-				<div class="nav_box">
-					<svg class="svg_icon">
-						<use class="svg_nav_all" xlink:href="#svg_classement" />
-					</svg>
-					<p>Classement</p>
-				</div>
-			</li>
-			<li>
-				<div class="nav_box">
-					<svg class="svg_icon">
-						<use class="svg_nav_all" xlink:href="#svg_calendrier" />
-					</svg>
-					<p>Calendrier</p>
-				</div>
-			</li>
-			<li>
-				<a href="../php/accueil.php">
-					<div class="nav_box">
-						<svg class="svg_icon">
-							<use class="svg_nav_all" xlink:href="#svg_accueil" />
-						</svg>
-						<p>Accueil</p>
-					</div>
-				</a>
-			</li>
-			<li>
-				<a href="../php/match.php">
-					<div class="nav_box">
-						<svg class="svg_icon">
-							<use class="svg_nav_all" xlink:href="#svg_score" />
-						</svg>
-						<p>Match</p>
-					</div>
-				</a>
-			</li>
-		</ul>
-	</div>
+    <div class="navigation">
+        <ul class="ul_nav">
+            <li>
+                <a href="../php/general.php">
+                    <div class=" current nav_box">
+                        <svg class="svg_icon" ><use class="svg_nav_all" xlink:href="#svg_setting"/></svg>
+                        <p>Général</p>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="../php/participant.php">
+                    <div class="nav_box">
+                        <svg class="svg_icon" ><use class="svg_nav_all" xlink:href="#svg_participant"/></svg>
+                        <p>Participant</p>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <div class="nav_box">
+                    <svg class="svg_icon" ><use class="svg_nav_all" xlink:href="#svg_classement"/></svg>
+                    <p>Classement</p>
+                </div>
+            </li>
+            <li>
+                <div class="nav_box">
+                    <svg class="svg_icon" ><use class="svg_nav_all" xlink:href="#svg_calendrier"/></svg>
+                    <p>Calendrier</p>
+                </div>
+            </li>
+            <li>
+                <div class="nav_box">
+                    <svg class="svg_icon" ><use class="svg_nav_all" xlink:href="#svg_presentation"/></svg>
+                    <p>Presentation</p>
+                </div>
+            </li>
+            <li>
+                <a href="../php/match.php">
+                    <div class="nav_box">
+                        <svg class="svg_icon" ><use class="svg_nav_all" xlink:href="#svg_score"/></svg>
+                        <p>Match</p>
+                    </div>
+                </a>
+            </li>
+        </ul>
+    </div>
 </nav>
 
 <body>
@@ -116,6 +102,9 @@
 
 	</section>
 </body>
+
+
+
 <hide class="hide">
 
 	<!-- svg pour le menu de navigation -->

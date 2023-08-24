@@ -29,7 +29,6 @@ nav {
     height: 100vh;
     width: 95px;
     background-color: rgba(205, 11, 11, 0);
-    position: absolute;
     position: fixed;
     display: flex;
     flex-direction: column;
@@ -290,11 +289,21 @@ nav {
     background-color: #fdfffa;
 }
 
-/* ******************************* ADD PLAYER */
+/* ******************************* ADD PLAYER Equipe 1/2 */
 
-#add_player {
+#first_team {
     position: fixed;
-    background-color: rgb(255, 255, 255);
+    background-color: #fdfffa;
+    width: 100%;
+    height: 100vh;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+#second_team {
+    position: fixed;
+    background-color: #fdfffa;
     width: 100%;
     height: 100vh;
     display: none;
@@ -303,23 +312,105 @@ nav {
     justify-content: center;
 }
 
+.add_player h1{
+    font-size: 20px;
+    font-weight: 600;
+    margin: 20px;
+}
+
 .input_container {
-    background-color: #6a994e;
-    width: 50%;
-    height: 80vh;
-}
-
-.input_container_name {
     display: flex;
-    flex-direction: row;
-    width: auto;
+    align-items: center;
+    justify-content: center;
+    border-radius: 7px;
+    background-color: #ffffff;
+    width: 40%;
+    height: 50vh;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
 }
 
-.name_player {
-    margin: 10px;
+.input_card{
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-.input_container_name input {
+
+.name_player { 
+    width: 100%;
+    margin-top: 20px;
+}
+
+.add_player h3{
+    font-weight: 400;
+    font-size: 15px;
+}
+
+.add_player input{
     border: black solid 1px;
     width: 100%;
+}
+
+.add_player label{
+    font: 400 15px;
+}
+
+.add_player select{
+    height: 30px;
+    width: 100%;
+}
+
+.add_player button{
+    background-color: #ffffff;
+    color: #6a994e;
+    border-color: #6a994e;
+    cursor: pointer;
+    font: 400 15px;
+    border: solid 1px;
+
+}
+
+.save_player{
+    border-radius: 5px;
+    width: 30%;
+    height: 30px;
+    margin: 30px;
+}
+
+
+
+/* ******** MODE EDIT POUR LES EQUIPES ******** */
+
+#first_team_mode_edit{
+    display: none;
+    margin: 0px 20px;
+    width: 550px;
+    border: #6a994e solid 1px;
+}
+#first_team_mode_view{
+    display: block;
+}
+
+#first_team_button{
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+#second_team_mode_edit{
+    display: none;
+    margin: 0px 20px;
+    width: 550px;
+    border: #6a994e solid 1px;
+}
+#second_team_mode_view{
+    display: block;
+}
+
+#second_team_button{
+    display: none;
+    align-items: center;
+    justify-content: center;
 }
