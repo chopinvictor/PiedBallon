@@ -1,0 +1,205 @@
+@font-face {
+    font-family: poppins_regular;
+    src: url(../assets/Poppins/Poppins-Regular.ttf);
+}
+
+@font-face {
+    font-family: poppins_light;
+    src: url(../assets/Poppins/Poppins-Light.ttf);
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+    font-family: poppins_regular;
+    text-decoration: none;
+}
+
+.hide {
+    display: none;
+}
+
+html {
+    background-color: #fdfffa;
+}
+
+/* *********************************************   NAVIGATION  */
+
+nav {
+    height: 100vh;
+    width: 95px;
+    background-color: rgba(205, 11, 11, 0);
+    position: absolute;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.navigation {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.nav_box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 60px;
+    padding: 8px 0px;
+    cursor: pointer;
+}
+
+.nav_box p {
+    font-size: 13px;
+    font-weight: 300;
+    font-family: poppins_light;
+    color: rgb(100, 100, 100);
+}
+
+.ul_nav {
+    margin-top: 10px;
+    list-style: none;
+}
+
+.svg_icon {
+    height: 24px;
+    width: 24px;
+    fill: rgb(100, 100, 100);
+}
+
+.current svg {
+    fill: #6a994e;
+}
+
+.current p {
+    color: #6a994e;
+}
+
+.nav_box:hover p {
+    color: #6a994e;
+}
+
+.nav_box:hover svg {
+    fill: #6a994e;
+}
+
+/* #svg_setting{
+    height: 10px;
+    width: 10px;
+} */
+
+/* ************************************************ PARAMETTRE */
+
+.parametre {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.parametre .principal {
+    margin-top: 30px;
+}
+
+.parametre h2 {
+    font-size: 19px;
+    font-weight: 600;
+}
+
+.parametre_container {
+    margin-top: 50px;
+}
+
+.parametre input,
+.button_principal {
+    width: 700px;
+    font-size: 18px;
+}
+
+.parametre .button_principal {
+    /* color: rgb(100,100,100); */
+
+    padding: 10px;
+    border-width: 1px;
+    color: #6a994e;
+    background-color: #ffffff;
+    border-color: #6a994e;
+
+    border-radius: 5px;
+    border-style: solid;
+    transition: 0.1s;
+}
+
+.parametre .button_principal:hover {
+    color: rgb(255, 255, 255);
+    background-color: #6a994e;
+    border-color: rgb(220, 220, 220);
+}
+
+.parametre input {
+    margin-top: 5px;
+    border: none;
+    background: #6a994e00;
+    border-bottom: solid 1px #6a994e;
+    font: 400;
+    font-size: 18px;
+}
+
+.card_container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: #ffffff;
+    width: 700px;
+    margin: 5px 0px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+}
+
+.card_info {
+    width: 550px;
+    margin: 0px 20px;
+    padding: 5px;
+}
+
+.card_number {
+    margin: 7px;
+    display: flex;
+    background-color: rgb(245, 245, 245);
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    width: 40px;
+    border-radius: 5px;
+    border-style: none;
+}
+
+.div_input_name {
+    display: flex;
+}
+
+.button_svg_edit {
+    position: relative;
+    right: 10px;
+    border-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #6a994e00;
+    height: 42px;
+    width: 42px;
+    border-radius: 21px;
+}
+
+.button_svg_edit:hover {
+    background-color: rgba(240, 240, 240, 1);
+}
+
+.svg_icon_edit {
+    fill: rgb(100, 100, 100);
+    height: 24px;
+    width: 24px;
+}
