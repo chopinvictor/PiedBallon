@@ -6,12 +6,13 @@
     <link rel="stylesheet" href="../css/participant.css">
     <title>Pied Ballon</title>
     <script src="../js/popup.js"></script>
+    <script src="../js/edit.js" ></script>
 </head>
 <nav>
     <div class="navigation">
         <ul class="ul_nav">
             <li>
-                <a href="../html/general.php">
+                <a href="../php/general.php">
                     <div class="nav_box">
                         <svg class="svg_icon" ><use class="svg_nav_all" xlink:href="#svg_setting"/></svg>
                         <p>Général</p>
@@ -44,7 +45,7 @@
                 </div>
             </li>
             <li>
-                <a href="../html/match.php">
+                <a href="../php/match.php">
                     <div class="nav_box">
                         <svg class="svg_icon" ><use class="svg_nav_all" xlink:href="#svg_score"/></svg>
                         <p>Match</p>
@@ -71,19 +72,23 @@
             <h2>Equipe 1</h2>
             <div class="card_container">
                 <p class="card_number Division_number">1</p>
-                <p class="card_info Division_name">France</p>
-                <button class="button_svg_edit" onclick="ActionPopup('second_popup')"><svg class="svg_icon_edit" ><use class="svg_nav_all" xlink:href="#svg_joueur"/></svg></button>
-                <button class="button_svg_edit"><svg class="svg_icon_edit" ><use class="svg_nav_all" xlink:href="#svg_edit"/></svg></button>
+                <p id="first_team_mode_view" class="card_info Division_name">France</p>
+                <input id="first_team_mode_edit" type="text">
+                <button class="button_svg_edit" onclick="ActionPopup('popup')"><svg class="svg_icon_edit" ><use class="svg_nav_all" xlink:href="#svg_joueur"/></svg></button>
+                <button class="button_svg_edit" onclick="change_to_mode_edit('first_team_mode_edit','first_team_mode_view','first_team_button')"><svg class="svg_icon_edit" ><use class="svg_nav_all" xlink:href="#svg_edit"/></svg></button>
             </div>
+            <button id="first_team_button"  class="button_principal">Enregistré cette modification</button>
         </div>
         <div class="principal equipe_2">
             <h2>Equipe 2</h2>
             <div class="card_container">
-                <p class="card_number Division_number">1</p>
-                <p class="card_info Division_name">Espagne</p>
-                <button class="button_svg_edit" onclick="ActionPopup('popup')"><svg class="svg_icon_edit" ><use class="svg_nav_all" xlink:href="#svg_joueur"/></svg></button>
-                <button class="button_svg_edit"><svg class="svg_icon_edit" ><use class="svg_nav_all" xlink:href="#svg_edit"/></svg></button>
+                <p class="card_number Division_number">2</p>
+                <p id="second_team_mode_view" class="card_info Division_name">Espagne</p>
+                <input id="second_team_mode_edit" type="text">
+                <button class="button_svg_edit" onclick="ActionPopup('second_popup')"><svg class="svg_icon_edit" ><use class="svg_nav_all" xlink:href="#svg_joueur"/></svg></button>
+                <button class="button_svg_edit" onclick="change_to_mode_edit('second_team_mode_edit','second_team_mode_view','second_team_button')"><svg class="svg_icon_edit" ><use class="svg_nav_all" xlink:href="#svg_edit"/></svg></button>
             </div>
+            <button id="second_team_button" class="button_principal">Enregistré cette modification</button>
         </div>
 
         <div id="popup">
@@ -100,7 +105,7 @@
                         </div>
                         <button class="button_svg_edit"><svg class="svg_icon_edit" ><use class="svg_nav_all" xlink:href="#svg_edit"/></svg></button>
                     </div>
-                    <button class="button_principal">Ajouter un joueur</button>
+                    <button class="button_principal" onclick="ActionPopup('first_team')">Ajouter un joueur</button>
                 </div>
             </div>
         </div>
@@ -118,14 +123,15 @@
                         </div>
                         <button class="button_svg_edit"><svg class="svg_icon_edit" ><use class="svg_nav_all" xlink:href="#svg_edit"/></svg></button>
                     </div>
-                    <button class="button_principal"  onclick="ActionPopup('add_player')">Ajouter un joueur</button>
+                    <button class="button_principal"  onclick="ActionPopup('second_team')">Ajouter un joueur</button>
                 </div>
             </div>
         </div>
-        <div id="add_player">
-            <button class="btn_close" onclick="ActionPopup('add_player')"><svg class="svg_icon_edit" ><use class="svg_nav_all" xlink:href="#svg_close"/></svg></button>
+        <div class="add_player" id="first_team">
+            <button class="btn_close" onclick="ActionPopup('first_team')"><svg class="svg_icon_edit" ><use class="svg_nav_all" xlink:href="#svg_close"/></svg></button>
+            <h1>Création d'un joueur</h1>
             <div class="input_container">
-                <div class="input_container_name">
+                <div class="input_card">
                     <div class="name_player">
                         <h3>Nom</h3>
                         <input type="text">
@@ -134,6 +140,56 @@
                         <h3>Prénom</h3>
                         <input type="text">
                     </div>
+                    <div class="name_player">
+                        <label for="select_team">Choix de l'équipe</label>
+                        <select name="select_team" id="select_team">
+                            <option value="France">France</option>
+                            <option value="France">France</option>
+                            <option value="France">France</option>
+                            <option value="France">France</option>
+                            <option value="France">France</option>
+                        </select>
+                    </div>
+                    <div class="name_player">
+                        <h3>Numéro de Maillot</h3>
+                        <input type="text">
+                    </div>
+                
+                    <button class="save_player">Enregistré</button>
+                </div>
+            </div>
+        </div>
+        <div class="add_player" id="second_team">
+            <button class="btn_close" onclick="ActionPopup('second_team')"><svg class="svg_icon_edit" ><use class="svg_nav_all" xlink:href="#svg_close"/></svg></button>
+            <h1>Création d'un joueur</h1>
+            <div class="input_container">
+                <div class="input_card">
+                <div class="input_card">
+                    <div class="name_player">
+                        <h3>Nom</h3>
+                        <input type="text">
+                    </div>
+                    <div class="name_player">
+                        <h3>Prénom</h3>
+                        <input type="text">
+                    </div>
+                    <div class="name_player">
+                        <label for="select_team">Choix de l'équipe</label>
+                        <select name="select_team" id="select_team">
+                            <option value="France">France</option>
+                            <option value="France">France</option>
+                            <option value="France">France</option>
+                            <option value="France">France</option>
+                            <option value="France">France</option>
+                        </select>
+                    </div>
+                    <div class="name_player">
+                        <h3>Numéro de Maillot</h3>
+                        <input type="text">
+                    </div>
+                
+                    <button class="save_player">Enregistré</button>
+                </div>
                 </div>
             </div>
         </div>

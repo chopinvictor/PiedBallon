@@ -12,7 +12,7 @@
     <div class="navigation">
         <ul class="ul_nav">
             <li>
-                <a href="../html/general.php">
+                <a href="../php/general.php">
                     <div class=" current nav_box">
                         <svg class="svg_icon" ><use class="svg_nav_all" xlink:href="#svg_setting"/></svg>
                         <p>Général</p>
@@ -20,7 +20,7 @@
                 </a>
             </li>
             <li>
-                <a href="../html/participant.php">
+                <a href="../php/participant.php">
                     <div class="nav_box">
                         <svg class="svg_icon" ><use class="svg_nav_all" xlink:href="#svg_participant"/></svg>
                         <p>Participant</p>
@@ -46,7 +46,7 @@
                 </div>
             </li>
             <li>
-                <a href="../html/match.php">
+                <a href="../php/match.php">
                     <div class="nav_box">
                         <svg class="svg_icon" ><use class="svg_nav_all" xlink:href="#svg_score"/></svg>
                         <p>Match</p>
@@ -95,6 +95,9 @@
 
     </section>
 </body>
+
+
+
 <hide class="hide">
 
     <!-- svg pour le menu de navigation -->
