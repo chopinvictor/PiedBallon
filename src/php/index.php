@@ -1,4 +1,8 @@
+<?php
+require_once('crud.php');
+require_once('fonctions.php');
 
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
