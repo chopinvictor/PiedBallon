@@ -373,6 +373,7 @@ nav {
 }
 
 .save_player{
+    padding: 0px;
     border-radius: 5px;
     width: 30%;
     height: 30px;
@@ -411,6 +412,33 @@ nav {
 
 #second_team_button{
     display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* arbitre popup creation */
+
+#popup_arbitre {
+    position: fixed;
+    background-color: #fdfffa;
+    width: 100%;
+    height: 100vh;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* arbitre popup edit */
+
+#popup_arbitre_edit{
+    position: fixed;
+    background-color: #fdfffa;
+    width: 100%;
+    height: 100vh;
+    display: none;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 }

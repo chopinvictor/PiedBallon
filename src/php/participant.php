@@ -12,6 +12,12 @@
     <div class="navigation">
         <ul class="ul_nav">
             <li>
+                <div class="nav_box">
+                    <svg class="svg_icon" ><use class="svg_nav_all" xlink:href="#svg_presentation"/></svg>
+                    <p>Presentation</p>
+                </div>
+            </li>
+            <li>
                 <a href="../php/general.php">
                     <div class="nav_box">
                         <svg class="svg_icon" ><use class="svg_nav_all" xlink:href="#svg_setting"/></svg>
@@ -26,7 +32,7 @@
                     <p>Participant</p>
                 </div>
             </li>
-            <li>
+            <!-- <li>
                 <div class="nav_box">
                     <svg class="svg_icon" ><use class="svg_nav_all" xlink:href="#svg_classement"/></svg>
                     <p>Classement</p>
@@ -37,13 +43,7 @@
                     <svg class="svg_icon" ><use class="svg_nav_all" xlink:href="#svg_calendrier"/></svg>
                     <p>Calendrier</p>
                 </div>
-            </li>
-            <li>
-                <div class="nav_box">
-                    <svg class="svg_icon" ><use class="svg_nav_all" xlink:href="#svg_presentation"/></svg>
-                    <p>Presentation</p>
-                </div>
-            </li>
+            </li> -->
             <li>
                 <a href="../php/match.php">
                     <div class="nav_box">
@@ -64,9 +64,9 @@
             <div class="card_container">
                 <p class="card_number Division_number">1</p>
                 <p class="card_info Division_name">Fernandez Bellami</p>
-                <button class="button_svg_edit"><svg class="svg_icon_edit" ><use class="svg_nav_all" xlink:href="#svg_edit"/></svg></button>
+                <button class="button_svg_edit" onclick="ActionPopup('popup_arbitre_edit')"><svg class="svg_icon_edit" ><use class="svg_nav_all" xlink:href="#svg_edit"/></svg></button>
             </div>
-            <button class="button_principal">Ajouter un arbitre</button>
+            <button class="button_principal" onclick="ActionPopup('popup_arbitre')" >Ajouter un arbitre</button>
         </div>
         <div class="principal equipe_1">
             <h2>Equipe 1</h2>
@@ -193,6 +193,52 @@
                 </div>
             </div>
         </div>
+        <!-- creation de la popup pour la modification des arbitre -->
+        <div class="add_player" id="popup_arbitre">
+            <button class="btn_close" onclick="ActionPopup('popup_arbitre')"><svg class="svg_icon_edit" ><use class="svg_nav_all" xlink:href="#svg_close"/></svg></button>
+            <h1>Création d'un Arbitre</h1>
+            <div class="input_container">
+                <div class="input_card">
+                    <div class="name_player">
+                        <h3>Nom</h3>
+                        <input type="text">
+                    </div>
+                    <div class="name_player">
+                        <h3>Prénom</h3>
+                        <input type="text">
+                    </div>
+                    <div class="name_player">
+                        <h3>Nationalité</h3>
+                        <input type="text">
+                    </div>
+                    <button class=" save_player">Enregistré</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- modification des arbitres  -->
+        <div class="add_player" id="popup_arbitre_edit">
+            <button class="btn_close" onclick="ActionPopup('popup_arbitre_edit')"><svg class="svg_icon_edit" ><use class="svg_nav_all" xlink:href="#svg_close"/></svg></button>
+            <h1>Création d'un Arbitre</h1>
+            <div class="input_container">
+                <div class="input_card">
+                    <div class="name_player">
+                        <h3>Nom</h3>
+                        <input type="text">
+                    </div>
+                    <div class="name_player">
+                        <h3>Prénom</h3>
+                        <input type="text">
+                    </div>
+                    <div class="name_player">
+                        <h3>Nationalité</h3>
+                        <input type="text">
+                    </div>
+                    <button class=" save_player">Enregistré</button>
+                </div>
+            </div>
+        </div>
+
     </section>
 </body>
 

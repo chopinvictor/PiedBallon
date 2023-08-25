@@ -13,5 +13,4 @@ function change_to_mode_edit(mode_edit,mode_view,button){
 }           // document.getElementsByClassName(mode_view).style.display ="block";;
 
 function change_to_input_date(input_date){
-
 }

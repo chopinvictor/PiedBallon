@@ -12,6 +12,12 @@
     <div class="navigation">
         <ul class="ul_nav">
             <li>
+                <div class="nav_box">
+                    <svg class="svg_icon" ><use class="svg_nav_all" xlink:href="#svg_presentation"/></svg>
+                    <p>Presentation</p>
+                </div>
+            </li>
+            <li>
                 <a href="../php/general.php">
                     <div class=" current nav_box">
                         <svg class="svg_icon" ><use class="svg_nav_all" xlink:href="#svg_setting"/></svg>
@@ -27,7 +33,7 @@
                     </div>
                 </a>
             </li>
-            <li>
+            <!-- <li>
                 <div class="nav_box">
                     <svg class="svg_icon" ><use class="svg_nav_all" xlink:href="#svg_classement"/></svg>
                     <p>Classement</p>
@@ -38,13 +44,7 @@
                     <svg class="svg_icon" ><use class="svg_nav_all" xlink:href="#svg_calendrier"/></svg>
                     <p>Calendrier</p>
                 </div>
-            </li>
-            <li>
-                <div class="nav_box">
-                    <svg class="svg_icon" ><use class="svg_nav_all" xlink:href="#svg_presentation"/></svg>
-                    <p>Presentation</p>
-                </div>
-            </li>
+            </li> -->
             <li>
                 <a href="../php/match.php">
                     <div class="nav_box">
