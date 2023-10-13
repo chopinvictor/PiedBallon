@@ -1,6 +1,6 @@
 <?php
 
-function DataBaseConnexion(){
+function DataBaseConnexion(){                    
     try{
     $user = "root";
     $pass = "";
