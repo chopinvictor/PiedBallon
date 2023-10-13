@@ -2,10 +2,11 @@
 <html lang="en">
 
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Création d'un match</title>
-	<link rel="stylesheet" href="../css/general.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/general.css">
+    <script src="../js/edit.js" ></script>
 </head>
 <header>
 </header>
@@ -59,46 +60,45 @@
 </nav>
 
 <body>
-	<section class="parametre">
-		<div class="parametre_container">
-			<div class="principal tournament_name">
-				<h2>Nom du Match</h2>
-				<div class="div_input_name">
-					<input type="text" value="Cap Vert vs Madagascar">
-				</div>
-			</div>
-			<div class="principal match_day">
-				<h2>Date du Match</h2>
-				<div class="card_container">
-					<p class="card_number match_number">1</p>
-					<p class="card_info match_date">Vendredi 18 Avril 2023</p>
-					<button class="button_svg_edit"><svg class="svg_icon_edit">
-							<use class="svg_nav_all" xlink:href="#svg_edit" />
-						</svg></button>
-				</div>
-			</div>
-			<div class="principal Match_location">
-				<h2>Lieux</h2>
-				<div class="card_container">
-					<p class="card_number location_number">1</p>
-					<p class="card_info location_name">Biaritz</p>
-					<button class="button_svg_edit"><svg class="svg_icon_edit">
-							<use class="svg_nav_all" xlink:href="#svg_edit" />
-						</svg></button>
-				</div>
-			</div>
-			<div class="principal division">
-				<h2>Division</h2>
-				<div class="card_container">
-					<p class="card_number Division_number">1</p>
-					<p class="card_info Division_name">Biaritz</p>
-					<button class="button_svg_edit"><svg class="svg_icon_edit">
-							<use class="svg_nav_all" xlink:href="#svg_edit" />
-						</svg></button>
-				</div>
-				<button class="button_principal">Ajouter une division</button>
-			</div>
-		</div>
+    <section class="parametre">
+        <div class="parametre_container">
+            <div class="principal tournament_name">
+                <h2>Nom du Match</h2>
+                <div class="div_input_name">
+                    <input type="text" value="Bloc3ouuuuuuuu">
+                </div>
+            </div>
+            <div class="principal match_day">
+                <h2>Date du Match</h2>
+                <div class="card_container">
+                    <p class="card_number match_number">1</p>
+                    <p id="first_team_mode_view" class="card_info match_date">Vendredi 18 Avril 2023</p>
+                    <input id="first_team_mode_edit" type="date">
+                    <button class="button_svg_edit" onclick="change_to_mode_edit('first_team_mode_edit','first_team_mode_view','first_team_button')"><svg class="svg_icon_edit" ><use class="svg_nav_all" xlink:href="#svg_edit"/></svg></button>
+            </div>
+            <button id="first_team_button"  class="button_principal">Enregistré cette modification</button>
+                </div>
+            </div>
+            <div class="principal Match_location">
+                <h2>Lieux</h2>
+                <div class="card_container">
+                    <p class="card_number location_number">1</p>
+                    <p id="second_team_mode_view" class="card_info location_name">Biaritz</p>
+                    <input id="second_team_mode_edit" type="text">
+                    <button class="button_svg_edit" onclick="change_to_mode_edit('second_team_mode_edit','second_team_mode_view','second_team_button')"><svg class="svg_icon_edit" ><use class="svg_nav_all" xlink:href="#svg_edit"/></svg></button>
+                </div>
+                <button id="second_team_button" class="button_principal">Enregistré cette modification</button>
+            </div>
+            <!-- <div class="principal division">
+                <h2>Division</h2>
+                <div class="card_container">
+                    <p class="card_number Division_number">1</p>
+                    <p class="card_info Division_name">Biaritz</p>
+                    <button class="button_svg_edit"><svg class="svg_icon_edit" ><use class="svg_nav_all" xlink:href="#svg_edit"/></svg></button>
+                </div>
+                <button class="button_principal">Ajouter une division</button>
+            </div> -->
+        </div>
 
 	</section>
 </body>
