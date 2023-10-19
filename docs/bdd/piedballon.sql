@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : sam. 14 oct. 2023 à 18:15
+-- Généré le : lun. 16 oct. 2023 à 00:52
 -- Version du serveur : 10.4.28-MariaDB
 -- Version de PHP : 8.2.4
 
@@ -205,6 +205,13 @@ CREATE TABLE `matchs` (
   `score_equipe_2` int(11) NOT NULL,
   `est_fini` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `matchs`
+--
+
+INSERT INTO `matchs` (`id_match`, `date_match`, `lieu_match`, `score_equipe_1`, `score_equipe_2`, `est_fini`) VALUES
+(2, '2023-10-17', '', 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -450,7 +457,7 @@ ALTER TABLE `joueurs`
 -- AUTO_INCREMENT pour la table `matchs`
 --
 ALTER TABLE `matchs`
-  MODIFY `id_match` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_match` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT pour la table `postes`
