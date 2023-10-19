@@ -1,13 +1,3 @@
-<?php 
-
-session_start();
-
-if(empty($_SESSION)){
-    header("Location: ../php/login.php");
-}
-
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,129 +5,174 @@ if(empty($_SESSION)){
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Match</title>
-	<link rel="stylesheet" href="../css/match.css">
+	<link rel="stylesheet" href="../css/accueil.css">
 </head>
 
-
 <nav>
-
-    <div class="navigation">
-        <ul class="ul_nav">
-            <li>
-                <div class="nav_box">
-                    <svg class="svg_icon" ><use class="svg_nav_all" xlink:href="#svg_presentation"/></svg>
-                    <p>Presentation</p>
-                </div>
-            </li>
-            <li>
-                <a href="../php/general.php">
-                    <div class="nav_box">
-                        <svg class="svg_icon" ><use class="svg_nav_all" xlink:href="#svg_setting"/></svg>
-                        <p>Général</p>
-                    </div>
-                </a>
-            </li>
-            <li>
-                <a href="../php/participant.php">
-                    <div class="nav_box">
-                        <svg class="svg_icon" ><use class="svg_nav_all" xlink:href="#svg_participant"/></svg>
-                        <p>Participant</p>
-                    </div>
-                </a>
-            </li>
-            <!-- <li>
-                <div class="nav_box">
-                    <svg class="svg_icon" ><use class="svg_nav_all" xlink:href="#svg_classement"/></svg>
-                    <p>Classement</p>
-                </div>
-            </li>
-            <li>
-                <div class="nav_box">
-                    <svg class="svg_icon" ><use class="svg_nav_all" xlink:href="#svg_calendrier"/></svg>
-                    <p>Calendrier</p>
-                </div>
-            </li> -->
-            <li>
-                <a href="../php/match.php">
-                    <div class="current nav_box">
-                        <svg class="svg_icon" ><use class="svg_nav_all" xlink:href="#svg_score"/></svg>
-                        <p>Match</p>
-                    </div>
-                </a>
-            </li>
-        </ul>
-    </div>
-
+	<div class="navigation">
+		<ul class="ul_nav">
+			<li>
+				<a href="../php/general.php">
+					<div class="nav_box">
+						<svg class="svg_icon">
+							<use class="svg_nav_all" xlink:href="#svg_setting" />
+						</svg>
+						<p>Général</p>
+					</div>
+				</a>
+			</li>
+			<li>
+				<a href="../php/participant.php">
+					<div class="nav_box">
+						<svg class="svg_icon">
+							<use class="svg_nav_all" xlink:href="#svg_participant" />
+						</svg>
+						<p>Participant</p>
+					</div>
+				</a>
+			</li>
+			<li>
+				<div class="nav_box">
+					<svg class="svg_icon">
+						<use class="svg_nav_all" xlink:href="#svg_classement" />
+					</svg>
+					<p>Classement</p>
+				</div>
+			</li>
+			<li>
+				<div class="nav_box">
+					<svg class="svg_icon">
+						<use class="svg_nav_all" xlink:href="#svg_calendrier" />
+					</svg>
+					<p>Calendrier</p>
+				</div>
+			</li>
+			<li>
+				<a href="../php/accueil.php">
+					<div class="nav_box">
+						<svg class="svg_icon">
+							<use class="svg_nav_all" xlink:href="#svg_accueil" />
+						</svg>
+						<p>Accueil</p>
+					</div>
+				</a>
+			</li>
+			<li>
+				<a href="../php/match.php">
+					<div class="current nav_box">
+						<svg class="svg_icon">
+							<use class="svg_nav_all" xlink:href="#svg_score" />
+						</svg>
+						<p>Match</p>
+					</div>
+				</a>
+			</li>
+		</ul>
+	</div>
 </nav>
 
 <body>
 	<section class="sec_main">
-		<div class="affichage_score">
-			<div class="equipe">
-				<h2 class="nom_equipe_1">France</h2>
-				<p class="Value_Score">100</p>
+		<div class="match_container">
+			<div class="match">
+				<div class="equipe">
+					<h2 class="nom_equipe_1">Brésil</h2>
+					<p class="Value_Score">1</p>
+				</div>
+				<div class="terrain">
+					<!-- <img class="img_terrain" src="../media/football.jpg" alt="terrain de football"> -->
+					Vs
+				</div>
+				<div class="equipe">
+					<h2 class="nom_equipe_2">Allemagne</h2>
+					<p class="Value_Score">7</p>
+				</div>
 			</div>
-			<div class="terrain">
-				<img class="img_terrain" src="../media/football.jpg" alt="terrain de football">
+			<div class="match">
+				<div class="equipe">
+					<h2 class="nom_equipe_1">France</h2>
+					<p class="Value_Score">0</p>
+				</div>
+				<div class="terrain">
+					<!-- <img class="img_terrain" src="../media/football.jpg" alt="terrain de football"> -->
+					Vs
+				</div>
+				<div class="equipe">
+					<h2 class="nom_equipe_2">Argentine</h2>
+					<p class="Value_Score">4</p>
+				</div>
 			</div>
-			<div class="equipe">
-				<h2 class="nom_equipe_2">Espagne</h2>
-				<p class="Value_Score">0</p>
+			<div class="match">
+				<div class="equipe">
+					<h2 class="nom_equipe_1">Uruguay</h2>
+					<p class="Value_Score">1</p>
+				</div>
+				<div class="terrain">
+					<!-- <img class="img_terrain" src="../media/football.jpg" alt="terrain de football"> -->
+					Vs
+				</div>
+				<div class="equipe">
+					<h2 class="nom_equipe_2">Espagne</h2>
+					<p class="Value_Score">2</p>
+				</div>
+			</div>
+			<div class="match">
+				<div class="equipe">
+					<h2 class="nom_equipe_1">Corée</h2>
+					<p class="Value_Score">0</p>
+				</div>
+				<div class="terrain">
+					<!-- <img class="img_terrain" src="../media/football.jpg" alt="terrain de football"> -->
+					Vs
+				</div>
+				<div class="equipe">
+					<h2 class="nom_equipe_2">Sénégal</h2>
+					<p class="Value_Score">0</p>
+				</div>
+			</div>
+			<div class="match">
+				<div class="equipe">
+					<h2 class="nom_equipe_1">Ukraine</h2>
+					<p class="Value_Score">2</p>
+				</div>
+				<div class="terrain">
+					<!-- <img class="img_terrain" src="../media/football.jpg" alt="terrain de football"> -->
+					Vs
+				</div>
+				<div class="equipe">
+					<h2 class="nom_equipe_2">Togo</h2>
+					<p class="Value_Score">4</p>
+				</div>
+			</div>
+			<div class="match">
+				<div class="equipe">
+					<h2 class="nom_equipe_1">Cap Vert</h2>
+					<p class="Value_Score">1</p>
+				</div>
+				<div class="terrain">
+					<!-- <img class="img_terrain" src="../media/football.jpg" alt="terrain de football"> -->
+					Vs
+				</div>
+				<div class="equipe">
+					<h2 class="nom_equipe_2">Angleterre</h2>
+					<p class="Value_Score">0</p>
+				</div>
+			</div>
+			<div class="match">
+				<div class="equipe">
+					<h2 class="nom_equipe_1">Autriche</h2>
+					<p class="Value_Score">1</p>
+				</div>
+				<div class="terrain">
+					<!-- <img class="img_terrain" src="../media/football.jpg" alt="terrain de football"> -->
+					Vs
+				</div>
+				<div class="equipe">
+					<h2 class="nom_equipe_2">Suisse</h2>
+					<p class="Value_Score">3</p>
+				</div>
 			</div>
 		</div>
-		<div class="match_action">
-			<div class="match_action_1">
-				<div class="action_but_equipe">
-					<button class="btn_but">-</button>
-					<p class="action_equipe">Espagne</p>
-					<button class="btn_but">+</button>
-				</div>
-				<div class="action_remplacement">
-					<div class="action_remplacement_equipe">
-						<div class="action_remplacement_equipe_container">
-							<p>Le numéro:</p>
-							<input min="0" max="99" class="input_number" type="number">
-							<p>remplace le numéro: </p>
-							<input min="0" max="99" class="input_number" type="number">
-							<p>Heure:</p>
-							<input class="date_remplacement" type="datetime-local">
-						</div>
-						<div class="action_remplacement_equipe_container">
-							<button class="btn_remplacement"><svg class="svg_btn_remplacement">
-									<use class="svg_nav_all" xlink:href="#svg_switch" />
-								</svg></button>
-						</div>
-					</div>
-				</div>
-			</div>
-
-
-			<div class="match_action_1">
-				<div class="action_but_equipe">
-					<button class="btn_but">-</button>
-					<p class="action_equipe">France</p>
-					<button class="btn_but">+</button>
-				</div>
-				<div class="action_remplacement">
-					<div class="action_remplacement_equipe">
-						<div class="action_remplacement_equipe_container">
-							<p>Le numéro:</p>
-							<input min="0" max="99" cla ss="input_number" type="number">
-							<p>Remplace le numéro: </p>
-							<input min="0" max="99" class="input_number" type="number">
-							<p>Heure:</p>
-							<input class="date_remplacement" type="datetime-local">
-						</div>
-						<div class="action_remplacement_equipe_container">
-							<button class="btn_remplacement"><svg class="svg_btn_remplacement">
-									<use class="svg_nav_all" xlink:href="#svg_switch" />
-								</svg></button>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-
 	</section>
 </body>
 

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : mer. 23 août 2023 à 10:24
--- Version du serveur : 10.4.27-MariaDB
--- Version de php : 8.0.25
+-- Généré le : lun. 16 oct. 2023 à 00:52
+-- Version du serveur : 10.4.28-MariaDB
+-- Version de PHP : 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -41,21 +41,9 @@ CREATE TABLE `arbitre_match` (
 
 CREATE TABLE `arbritres` (
   `id_arbitre` int(11) NOT NULL,
-  `nom` varchar(50) DEFAULT NULL,
-  `prenom` varchar(50) DEFAULT NULL,
-  `nationalite_arbitre` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Structure de la table `a_defini`
---
-
-CREATE TABLE `a_defini` (
-  `id_utilisateur` int(11) NOT NULL,
-  `id_question` int(11) NOT NULL,
-  `reponse` varchar(255) DEFAULT NULL
+  `nom` varchar(50) NOT NULL,
+  `prenom` varchar(50) NOT NULL,
+  `nationalite_arbitre` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -66,7 +54,7 @@ CREATE TABLE `a_defini` (
 
 CREATE TABLE `buts` (
   `id_but` int(11) NOT NULL,
-  `nom_buteur` varchar(50) DEFAULT NULL,
+  `nom_buteur` varchar(50) NOT NULL,
   `id_joueur` int(11) NOT NULL,
   `id_evenement` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -79,7 +67,7 @@ CREATE TABLE `buts` (
 
 CREATE TABLE `clubs` (
   `id_club` int(11) NOT NULL,
-  `lieu` varchar(50) DEFAULT NULL
+  `lieu` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -103,9 +91,14 @@ INSERT INTO `clubs` (`id_club`, `lieu`) VALUES
 
 CREATE TABLE `equipes` (
   `id_equipe` int(11) NOT NULL,
-  `nb_match_joues` int(11) DEFAULT NULL,
-  `nb_match_gagnes` int(11) DEFAULT NULL,
-  `nb_match_egalites` int(11) DEFAULT NULL,
+  `nb_match_joues` int(11) NOT NULL,
+  `nb_match_gagnes` int(11) NOT NULL,
+  `nb_match_egalites` int(11) NOT NULL,
+  `prenom_entraineur` varchar(50) NOT NULL,
+  `entraineur_nom` varchar(50) NOT NULL,
+  `entraineur_prenom` varchar(50) NOT NULL,
+  `entraineur_adjoint_nom` varchar(50) NOT NULL,
+  `entraineur_adjoint_prenom` varchar(50) NOT NULL,
   `id_club` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -113,14 +106,14 @@ CREATE TABLE `equipes` (
 -- Déchargement des données de la table `equipes`
 --
 
-INSERT INTO `equipes` (`id_equipe`, `nb_match_joues`, `nb_match_gagnes`, `nb_match_egalites`, `id_club`) VALUES
-(1, NULL, NULL, NULL, 1),
-(2, NULL, NULL, NULL, 4),
-(3, NULL, NULL, NULL, 2),
-(4, NULL, NULL, NULL, 5),
-(5, NULL, NULL, NULL, 3),
-(6, NULL, NULL, NULL, 6),
-(7, NULL, NULL, NULL, 7);
+INSERT INTO `equipes` (`id_equipe`, `nb_match_joues`, `nb_match_gagnes`, `nb_match_egalites`, `prenom_entraineur`, `entraineur_nom`, `entraineur_prenom`, `entraineur_adjoint_nom`, `entraineur_adjoint_prenom`, `id_club`) VALUES
+(1, 0, 0, 0, '', '', '', '', '', 1),
+(2, 0, 0, 0, '', '', '', '', '', 4),
+(3, 0, 0, 0, '', '', '', '', '', 2),
+(4, 0, 0, 0, '', '', '', '', '', 5),
+(5, 0, 0, 0, '', '', '', '', '', 3),
+(6, 0, 0, 0, '', '', '', '', '', 6),
+(7, 0, 0, 0, '', '', '', '', '', 7);
 
 -- --------------------------------------------------------
 
@@ -141,7 +134,7 @@ CREATE TABLE `equipe_joue` (
 
 CREATE TABLE `evenements` (
   `id_evenement` int(11) NOT NULL,
-  `horodatage` int(11) DEFAULT NULL,
+  `horodatage` int(11) NOT NULL,
   `id_match` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -153,7 +146,7 @@ CREATE TABLE `evenements` (
 
 CREATE TABLE `fautes` (
   `id_faute` int(11) NOT NULL,
-  `est_fautif` tinyint(1) DEFAULT NULL,
+  `est_fautif` tinyint(1) NOT NULL,
   `id_joueur` int(11) NOT NULL,
   `id_evenement` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -167,11 +160,11 @@ CREATE TABLE `fautes` (
 CREATE TABLE `joue` (
   `id_joueur` int(11) NOT NULL,
   `id_poste` int(11) NOT NULL,
-  `titulaire` tinyint(1) DEFAULT NULL,
-  `capitaine` tinyint(1) DEFAULT NULL,
-  `suppleant` tinyint(1) DEFAULT NULL,
-  `entree` int(11) DEFAULT NULL,
-  `sortie` int(11) DEFAULT NULL
+  `titulaire` tinyint(1) NOT NULL,
+  `capitaine` tinyint(1) NOT NULL,
+  `suppleant` tinyint(1) NOT NULL,
+  `entree` int(11) NOT NULL,
+  `sortie` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -182,11 +175,11 @@ CREATE TABLE `joue` (
 
 CREATE TABLE `joueurs` (
   `id_joueur` int(11) NOT NULL,
-  `nom` varchar(50) DEFAULT NULL,
-  `prenom` varchar(50) DEFAULT NULL,
-  `nationalite_joueur` varchar(50) DEFAULT NULL,
-  `club` varchar(50) DEFAULT NULL,
-  `numero` int(11) DEFAULT NULL,
+  `nom` varchar(50) NOT NULL,
+  `prenom` varchar(50) NOT NULL,
+  `nationalite_joueur` varchar(50) NOT NULL,
+  `club` varchar(50) NOT NULL,
+  `numero` int(11) NOT NULL,
   `id_equipe` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -206,11 +199,19 @@ INSERT INTO `joueurs` (`id_joueur`, `nom`, `prenom`, `nationalite_joueur`, `club
 
 CREATE TABLE `matchs` (
   `id_match` int(11) NOT NULL,
-  `date_match` date DEFAULT NULL,
-  `score_equipe_1` int(11) DEFAULT NULL,
-  `score_equipe_2` int(11) DEFAULT NULL,
-  `est_fini` tinyint(1) DEFAULT NULL
+  `date_match` date NOT NULL,
+  `lieu_match` varchar(50) NOT NULL,
+  `score_equipe_1` int(11) NOT NULL,
+  `score_equipe_2` int(11) NOT NULL,
+  `est_fini` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `matchs`
+--
+
+INSERT INTO `matchs` (`id_match`, `date_match`, `lieu_match`, `score_equipe_1`, `score_equipe_2`, `est_fini`) VALUES
+(2, '2023-10-17', '', 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -231,7 +232,7 @@ CREATE TABLE `participe` (
 
 CREATE TABLE `postes` (
   `id_poste` int(11) NOT NULL,
-  `poste` varchar(50) DEFAULT NULL,
+  `poste` varchar(50) NOT NULL,
   `id_match` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -243,7 +244,7 @@ CREATE TABLE `postes` (
 
 CREATE TABLE `questions_securite` (
   `id_question` int(11) NOT NULL,
-  `question` varchar(50) DEFAULT NULL
+  `question` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -261,16 +262,28 @@ CREATE TABLE `remplacements` (
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `reponses_securite`
+--
+
+CREATE TABLE `reponses_securite` (
+  `id_utilisateur` int(11) NOT NULL,
+  `id_question` int(11) NOT NULL,
+  `reponse` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `utilisateurs`
 --
 
 CREATE TABLE `utilisateurs` (
   `id_utilisateur` int(11) NOT NULL,
-  `nom` varchar(50) DEFAULT NULL,
+  `nom` varchar(50) NOT NULL,
   `prenom` varchar(50) NOT NULL,
-  `adresse_mail` varchar(50) DEFAULT NULL,
-  `mot_de_passe` varchar(50) DEFAULT NULL,
-  `est_admin` tinyint(1) DEFAULT NULL
+  `adresse_mail` varchar(50) NOT NULL,
+  `mot_de_passe` varchar(50) NOT NULL,
+  `est_admin` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -289,13 +302,6 @@ ALTER TABLE `arbitre_match`
 --
 ALTER TABLE `arbritres`
   ADD PRIMARY KEY (`id_arbitre`);
-
---
--- Index pour la table `a_defini`
---
-ALTER TABLE `a_defini`
-  ADD PRIMARY KEY (`id_utilisateur`,`id_question`),
-  ADD KEY `id_question` (`id_question`);
 
 --
 -- Index pour la table `buts`
@@ -389,6 +395,13 @@ ALTER TABLE `remplacements`
   ADD KEY `id_joueur` (`id_joueur`);
 
 --
+-- Index pour la table `reponses_securite`
+--
+ALTER TABLE `reponses_securite`
+  ADD PRIMARY KEY (`id_utilisateur`,`id_question`),
+  ADD KEY `id_question` (`id_question`);
+
+--
 -- Index pour la table `utilisateurs`
 --
 ALTER TABLE `utilisateurs`
@@ -444,7 +457,7 @@ ALTER TABLE `joueurs`
 -- AUTO_INCREMENT pour la table `matchs`
 --
 ALTER TABLE `matchs`
-  MODIFY `id_match` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_match` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT pour la table `postes`
@@ -480,13 +493,6 @@ ALTER TABLE `utilisateurs`
 ALTER TABLE `arbitre_match`
   ADD CONSTRAINT `arbitre_match_ibfk_1` FOREIGN KEY (`id_arbitre`) REFERENCES `arbritres` (`id_arbitre`),
   ADD CONSTRAINT `arbitre_match_ibfk_2` FOREIGN KEY (`id_match`) REFERENCES `matchs` (`id_match`);
-
---
--- Contraintes pour la table `a_defini`
---
-ALTER TABLE `a_defini`
-  ADD CONSTRAINT `a_defini_ibfk_1` FOREIGN KEY (`id_utilisateur`) REFERENCES `utilisateurs` (`id_utilisateur`),
-  ADD CONSTRAINT `a_defini_ibfk_2` FOREIGN KEY (`id_question`) REFERENCES `questions_securite` (`id_question`);
 
 --
 -- Contraintes pour la table `buts`
@@ -553,6 +559,13 @@ ALTER TABLE `postes`
 ALTER TABLE `remplacements`
   ADD CONSTRAINT `remplacements_ibfk_1` FOREIGN KEY (`id_joueur`) REFERENCES `joueurs` (`id_joueur`),
   ADD CONSTRAINT `remplacements_ibfk_2` FOREIGN KEY (`id_evenement`) REFERENCES `evenements` (`id_evenement`);
+
+--
+-- Contraintes pour la table `reponses_securite`
+--
+ALTER TABLE `reponses_securite`
+  ADD CONSTRAINT `reponses_securite_ibfk_1` FOREIGN KEY (`id_utilisateur`) REFERENCES `utilisateurs` (`id_utilisateur`),
+  ADD CONSTRAINT `reponses_securite_ibfk_2` FOREIGN KEY (`id_question`) REFERENCES `questions_securite` (`id_question`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
