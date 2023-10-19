@@ -1,3 +1,13 @@
+<?php 
+
+session_start();
+
+if(empty($_SESSION)){
+    header("Location: ../php/login.php");
+}
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
