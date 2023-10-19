@@ -3,27 +3,35 @@ require_once('bdd.php');
 require_once('fonctions.php');
 //var_dump($_POST);
 
+session_start();
+ 
 if(isset($_POST['send'])){
-    if(!empty($_POST['username']) && !empty($_POST['mdp']) && !empty($_POST['email']) ){
+    if(!empty($_POST['prenom']) && !empty($_POST['nom']) && !empty($_POST['mdp']) && ($_POST['mdp2'] == $_POST['mdp']) && !empty($_POST['email']) ){
         // strip_tags pour enlever le code html sql etc etc 
-        $username = strip_tags($_POST['username']);
+        $prenom = strip_tags($_POST['prenom']);
+        $nom = strip_tags($_POST['nom']);
         $email = strip_tags($_POST['email']);
         $mdp = password_hash($_POST['mdp'],PASSWORD_DEFAULT);
 
-        $insertUser = $db-> prepare('INSERT INTO list_user(UserName,Password,Email)VALUES(?,?,?)');
-        $insertUser->execute(array($username,$mdp,$email));
-        
-        $getUser = $db->prepare('SELECT * FROM list_user WHERE UserName = ? AND Password = ? AND Email = ?');
-        $getUser->execute(array($username,$mdp,$email));
+        $exist = $db->prepare('SELECT * FROM utilisateurs WHERE adresse_mail = ?');
+        $exist->execute(array($email));
 
-        if($getUser->rowCount()>0){
-            $_SESSION['Username'] = $username;
-            $_SESSION['id'] = $getUser->fetch()['Id_list_user'];
-            header("Location: ../HTML/identification.php");
-            exit();
+        if($exist->rowCount()==0){  
+            $insertUser = $db-> prepare('INSERT INTO utilisateurs(nom , prenom, mot_de_passe, adresse_mail)VALUES(?,?,?,?)');
+            $insertUser->execute(array($nom,$prenom,$mdp,$email));
+            
+            $getUser = $db->prepare('SELECT * FROM utilisateurs WHERE nom = ? AND prenom = ? AND mot_de_passe = ? AND adresse_mail = ?');
+            $getUser->execute(array($nom,$prenom,$mdp,$email));
+
+            header("Location: ../php/login.php");
+
+
+        }else{
+            echo "l'email est déjà utilisé veuillez en saisir une autre";
         }
 
-        echo $_SESSION['id'];
+
+
 
     }else{
         echo "veuillez saisir tout pd";
