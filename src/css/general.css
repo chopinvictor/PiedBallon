@@ -203,3 +203,40 @@ nav {
     height: 24px;
     width: 24px;
 }
+
+
+/* les différentes pop up */
+
+#first_team_mode_edit{
+    display: none;
+    margin: 0px 20px;
+    width: 550px;
+    border: #6a994e solid 1px;
+}
+
+#first_team_mode_view{
+    display: block;
+}
+
+#first_team_button{
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+#second_team_mode_edit{
+    display: none;
+    margin: 0px 20px;
+    width: 550px;
+    border: #6a994e solid 1px;
+}
+
+#second_team_mode_view{
+    display: block;
+}
+
+#second_team_button{
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
