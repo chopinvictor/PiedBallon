@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : lun. 16 oct. 2023 à 00:52
+-- Généré le : dim. 22 oct. 2023 à 00:05
 -- Version du serveur : 10.4.28-MariaDB
 -- Version de PHP : 8.2.4
 
@@ -123,7 +123,8 @@ INSERT INTO `equipes` (`id_equipe`, `nb_match_joues`, `nb_match_gagnes`, `nb_mat
 
 CREATE TABLE `equipe_joue` (
   `id_equipe` int(11) NOT NULL,
-  `id_match` int(11) NOT NULL
+  `id_match` int(11) NOT NULL,
+  `domicile` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -161,10 +162,10 @@ CREATE TABLE `joue` (
   `id_joueur` int(11) NOT NULL,
   `id_poste` int(11) NOT NULL,
   `titulaire` tinyint(1) NOT NULL,
-  `capitaine` tinyint(1) NOT NULL,
-  `suppleant` tinyint(1) NOT NULL,
+  `capitaine` tinyint(1) DEFAULT NULL,
   `entree` int(11) NOT NULL,
-  `sortie` int(11) NOT NULL
+  `sortie` int(11) NOT NULL,
+  `remplacant` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -199,19 +200,12 @@ INSERT INTO `joueurs` (`id_joueur`, `nom`, `prenom`, `nationalite_joueur`, `club
 
 CREATE TABLE `matchs` (
   `id_match` int(11) NOT NULL,
-  `date_match` date NOT NULL,
+  `date_match` datetime NOT NULL,
   `lieu_match` varchar(50) NOT NULL,
   `score_equipe_1` int(11) NOT NULL,
   `score_equipe_2` int(11) NOT NULL,
   `est_fini` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Déchargement des données de la table `matchs`
---
-
-INSERT INTO `matchs` (`id_match`, `date_match`, `lieu_match`, `score_equipe_1`, `score_equipe_2`, `est_fini`) VALUES
-(2, '2023-10-17', '', 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -250,12 +244,23 @@ CREATE TABLE `questions_securite` (
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `remplace`
+--
+
+CREATE TABLE `remplace` (
+  `id_joueur` int(11) NOT NULL,
+  `est_remplacé` tinyint(1) DEFAULT NULL,
+  `id_remplacement` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `remplacements`
 --
 
 CREATE TABLE `remplacements` (
   `id_remplacement` int(11) NOT NULL,
-  `id_joueur` int(11) NOT NULL,
   `id_evenement` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -282,7 +287,7 @@ CREATE TABLE `utilisateurs` (
   `nom` varchar(50) NOT NULL,
   `prenom` varchar(50) NOT NULL,
   `adresse_mail` varchar(50) NOT NULL,
-  `mot_de_passe` varchar(50) NOT NULL,
+  `mot_de_passe` varchar(255) NOT NULL,
   `est_admin` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -387,12 +392,18 @@ ALTER TABLE `questions_securite`
   ADD PRIMARY KEY (`id_question`);
 
 --
+-- Index pour la table `remplace`
+--
+ALTER TABLE `remplace`
+  ADD PRIMARY KEY (`id_joueur`),
+  ADD KEY `id_remplacement` (`id_remplacement`);
+
+--
 -- Index pour la table `remplacements`
 --
 ALTER TABLE `remplacements`
   ADD PRIMARY KEY (`id_remplacement`),
-  ADD UNIQUE KEY `id_evenement` (`id_evenement`),
-  ADD KEY `id_joueur` (`id_joueur`);
+  ADD UNIQUE KEY `id_evenement` (`id_evenement`);
 
 --
 -- Index pour la table `reponses_securite`
@@ -457,7 +468,7 @@ ALTER TABLE `joueurs`
 -- AUTO_INCREMENT pour la table `matchs`
 --
 ALTER TABLE `matchs`
-  MODIFY `id_match` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_match` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT pour la table `postes`
@@ -554,11 +565,17 @@ ALTER TABLE `postes`
   ADD CONSTRAINT `postes_ibfk_1` FOREIGN KEY (`id_match`) REFERENCES `matchs` (`id_match`);
 
 --
+-- Contraintes pour la table `remplace`
+--
+ALTER TABLE `remplace`
+  ADD CONSTRAINT `remplace_ibfk_1` FOREIGN KEY (`id_joueur`) REFERENCES `joueurs` (`id_joueur`),
+  ADD CONSTRAINT `remplace_ibfk_2` FOREIGN KEY (`id_remplacement`) REFERENCES `remplacements` (`id_remplacement`);
+
+--
 -- Contraintes pour la table `remplacements`
 --
 ALTER TABLE `remplacements`
-  ADD CONSTRAINT `remplacements_ibfk_1` FOREIGN KEY (`id_joueur`) REFERENCES `joueurs` (`id_joueur`),
-  ADD CONSTRAINT `remplacements_ibfk_2` FOREIGN KEY (`id_evenement`) REFERENCES `evenements` (`id_evenement`);
+  ADD CONSTRAINT `remplacements_ibfk_1` FOREIGN KEY (`id_evenement`) REFERENCES `evenements` (`id_evenement`);
 
 --
 -- Contraintes pour la table `reponses_securite`
