@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : dim. 22 oct. 2023 à 02:05
+-- Généré le : dim. 22 oct. 2023 à 03:31
 -- Version du serveur : 10.4.28-MariaDB
 -- Version de PHP : 8.2.4
 
@@ -81,7 +81,8 @@ INSERT INTO `clubs` (`id_club`, `lieu`) VALUES
 (4, 'Toulouse'),
 (5, 'Montpellier'),
 (6, 'Lens'),
-(7, 'Lyon');
+(7, 'Lyon'),
+(8, 'Nice');
 
 -- --------------------------------------------------------
 
@@ -113,7 +114,8 @@ INSERT INTO `equipes` (`id_equipe`, `nb_match_joues`, `nb_match_gagnes`, `nb_mat
 (4, 0, 0, 0, '', '', '', '', '', 5),
 (5, 0, 0, 0, '', '', '', '', '', 3),
 (6, 0, 0, 0, '', '', '', '', '', 6),
-(7, 0, 0, 0, '', '', '', '', '', 7);
+(7, 0, 0, 0, '', '', '', '', '', 7),
+(8, 0, 0, 0, '', '', '', '', '', 8);
 
 -- --------------------------------------------------------
 
@@ -182,6 +184,92 @@ CREATE TABLE `joueurs` (
   `numero` int(11) NOT NULL,
   `id_equipe` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `joueurs`
+--
+
+INSERT INTO `joueurs` (`id_joueur`, `nom`, `prenom`, `nationalite_joueur`, `numero`, `id_equipe`) VALUES
+(1, 'Gorgelin', 'Mathieu', 'France', 1, 1),
+(2, 'Desmas', 'Arthur', 'France', 16, 1),
+(3, 'Gautier', 'Lloris', 'France', 7, 1),
+(4, 'Salmier', 'Yoann', 'Guyanne francaise', 6, 1),
+(5, 'Sangante', 'Arouna', 'Sénégal', 18, 1),
+(6, 'Thiare', 'Aliou', 'Sénégal', 22, 1),
+(7, 'El Hajjam', 'Oualid', 'Maroc', 44, 1),
+(8, 'Operi', 'Christopher', 'Côte d Ivoire', 15, 1),
+(9, 'Nego', 'Loïc', 'Hongrie', 34, 1),
+(10, 'Aloïs', 'Confais', 'France', 4, 1),
+(11, 'Daler', 'Kuzyaev', 'Russie', 13, 1),
+(12, 'Targhalline', 'Oussama', 'Maroc', 19, 1),
+(13, 'Ndiaye', 'Rassoul', 'Sénégal', 41, 1),
+(14, 'Mbemba', 'Nolan', 'Congo', 25, 1),
+(15, 'Touré', 'Abdoulaye', 'Guinée', 3, 1),
+(16, 'Kechta', 'Yassine', 'Maroc', 17, 1),
+(17, 'Diawara', 'Kandet', 'France', 26, 1),
+(18, 'Grandsir', 'Samuel', 'France', 23, 1),
+(19, 'Logbo', 'Elysée', 'France', 8, 1),
+(20, 'Bayo', 'Mohamed', 'Guinéé', 33, 1),
+(21, 'Casimir', 'Josue', 'France', 27, 1),
+(22, 'Alioui', 'Nabil', 'France', 37, 1),
+(23, 'Sabbi', 'Emmanuel', 'Etas-Unis', 29, 1),
+(24, 'Soumaré', 'Issa', 'Sénégal', 39, 1),
+(25, 'Tenas', 'Arnau', 'Espagne', 1, 3),
+(26, 'Navas', 'Keylor', 'Costa Rica', 3, 3),
+(27, 'Letellier', 'Alexandre', 'France', 21, 3),
+(28, 'Rico', 'Sergio', 'Espagne', 14, 3),
+(29, 'Donnarumma', 'Gianluigi', 'Italie', 5, 3),
+(30, 'Pedrito', 'Marquinhos', 'Brésil', 15, 3),
+(31, 'Skriniar', 'Milan', 'Slovaquie', 23, 3),
+(32, 'Kimpembe', 'Presnel', 'nationalite_joueur', 26, 3),
+(33, 'Mukiele', 'Nordi', 'France', 19, 3),
+(34, 'Hakimi', 'Achraf', 'Maroc', 14, 3),
+(35, 'Kurzawa', 'Layvin', 'France', 33, 3),
+(36, 'Hernandez', 'Lucas ', 'France', 17, 3),
+(37, 'Mendes', 'Nuno', 'Portugal', 35, 3),
+(38, 'Ugarte', 'Manuel', 'Portugal', 21, 3),
+(39, 'Ruiz', 'Fabian', 'Espagne', 27, 3),
+(40, 'Pereira', 'Danilo', 'Portugal', 38, 3),
+(41, 'Yoli', 'Vitinha', 'Portugal', 44, 3),
+(42, 'Kang-in', 'Lee', 'Coree', 8, 3),
+(43, 'Ndour', 'Cher', 'Italie', 9, 3),
+(44, 'Soler', 'Carlos', 'Espagne', 0, 3),
+(45, 'Zaïre-Emery', 'Warren', 'France', 22, 3),
+(46, 'Mbappe', 'Kylian', 'France', 10, 3),
+(47, 'Ramos', 'Goncalo', 'Portugal', 43, 3),
+(48, 'Dembele', 'Ousmane', 'France', 11, 3),
+(49, 'Asensio', 'Marco', 'Espagne', 35, 3),
+(50, 'Kolo', 'Randal', 'Muani', 11, 3),
+(51, 'Sirigu', 'Salvatore', 'Italie', 8, 3),
+(52, 'Boulhendi', 'Teddy', 'Algérie', 17, 3),
+(53, 'Bulka', 'Marcin', 'Pologne', 13, 3),
+(54, 'Mendy', 'Antoine', 'France', 17, 3),
+(55, 'Todibo', 'Jean-Clair', 'France', 3, 3),
+(56, 'Dante', 'David', 'Brésil', 10, 3),
+(57, 'Lotomba', 'Jordan', 'Suisse', 24, 3),
+(58, 'Atal', 'Youcef', 'Algérie', 14, 3),
+(59, 'Amraoui', 'Ayoub', 'Maroc', 16, 3),
+(60, 'Perraud', 'Romain', 'France', 29, 3),
+(61, 'Bard', 'Melvin', 'nationalite_joueur', 0, 3),
+(62, 'Ndayishimiye', 'Youssouf', 'Burundi', 33, 3),
+(63, 'Sirigu', 'Salvatore', 'Italie', 8, 3),
+(64, 'Boulhendi', 'Teddy', 'Algérie', 17, 3),
+(65, 'Bulka', 'Marcin', 'Pologne', 13, 3),
+(66, 'Mendy', 'Antoine', 'France', 17, 3),
+(67, 'Todibo', 'Jean-Clair', 'France', 3, 3),
+(68, 'Dante', 'David', 'Brésil', 10, 3),
+(69, 'Lotomba', 'Jordan', 'Suisse', 24, 3),
+(70, 'Atal', 'Youcef', 'Algérie', 14, 3),
+(71, 'Amraoui', 'Ayoub', 'Maroc', 16, 3),
+(72, 'Perraud', 'Romain', 'France', 29, 3),
+(73, 'Bard', 'Melvin', 'nationalite_joueur', 0, 3),
+(74, 'Ndayishimiye', 'Youssouf', 'Burundi', 33, 3),
+(75, 'Thuram', 'Khéphren', 'France', 20, 3),
+(76, 'Sanson', 'Morgan', 'France', 36, 3),
+(77, 'Beka Beka', 'Alexis', 'France', 41, 3),
+(78, 'Rosario', 'Pablo', 'Pays-Bas', 13, 3),
+(79, 'Boudaoui', 'Hicham', 'Algérie', 44, 3),
+(80, 'Boga', 'Jérémie ', 'Côte d Ivoire', 42, 3);
 
 -- --------------------------------------------------------
 
@@ -429,13 +517,13 @@ ALTER TABLE `buts`
 -- AUTO_INCREMENT pour la table `clubs`
 --
 ALTER TABLE `clubs`
-  MODIFY `id_club` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_club` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT pour la table `equipes`
 --
 ALTER TABLE `equipes`
-  MODIFY `id_equipe` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_equipe` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT pour la table `evenements`
@@ -453,7 +541,7 @@ ALTER TABLE `fautes`
 -- AUTO_INCREMENT pour la table `joueurs`
 --
 ALTER TABLE `joueurs`
-  MODIFY `id_joueur` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_joueur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
 
 --
 -- AUTO_INCREMENT pour la table `matchs`
