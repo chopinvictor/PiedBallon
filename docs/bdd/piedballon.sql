@@ -75,13 +75,13 @@ CREATE TABLE `clubs` (
 --
 
 INSERT INTO `clubs` (`id_club`, `lieu`) VALUES
-(1, 'manchester'),
-(2, 'argentine'),
-(3, 'suisse'),
-(4, 'portugal'),
-(5, 'nigeria'),
-(6, 'hongrie'),
-(7, 'france');
+(1, 'Le Havre'),
+(2, 'PSG'),
+(3, 'Lorient'),
+(4, 'Toulouse'),
+(5, 'Montpellier'),
+(6, 'Lens'),
+(7, 'Lyon');
 
 -- --------------------------------------------------------
 
