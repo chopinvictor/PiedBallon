@@ -14,11 +14,6 @@ if (isset($_POST['send'])) {
         $return->execute([$_POST['email']]);
         $user = $return->fetch(PDO::FETCH_OBJ);
 
-        var_dump($_POST['mdp']);
-
-        var_dump($user); 
-
-        var_dump(password_verify($_POST['mdp'], $user-> mot_de_passe ));
         // header("Location: ../php/general.php");
 
         if (!empty($user)) {

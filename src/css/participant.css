@@ -13,6 +13,8 @@
     padding: 0px;
     font-family: poppins_regular;
     text-decoration: none;
+    font-weight: 400;
+    font-size: 14px;
 }
 
 .hide {
@@ -439,6 +441,17 @@ nav {
     height: 100vh;
     display: none;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* ***************** FORM */
+
+
+.form{
+    width: 100%;
+    display: flex;
     align-items: center;
     justify-content: center;
 }

@@ -5,7 +5,10 @@ require_once('fonctions.php');
 
 session_start();
  
+
+
 if(isset($_POST['send'])){
+    var_dump($_POST['send']);
     if(!empty($_POST['prenom']) && !empty($_POST['nom']) && !empty($_POST['mdp']) && ($_POST['mdp2'] == $_POST['mdp']) && !empty($_POST['email']) ){
         // strip_tags pour enlever le code html sql etc etc 
         $prenom = strip_tags($_POST['prenom']);
