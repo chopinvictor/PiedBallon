@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : dim. 22 oct. 2023 à 04:39
+-- Généré le : dim. 22 oct. 2023 à 04:44
 -- Version du serveur : 10.4.28-MariaDB
 -- Version de PHP : 8.2.4
 
@@ -95,7 +95,6 @@ CREATE TABLE `equipes` (
   `nb_match_joues` int(11) NOT NULL,
   `nb_match_gagnes` int(11) NOT NULL,
   `nb_match_egalites` int(11) NOT NULL,
-  `prenom_entraineur` varchar(50) NOT NULL,
   `entraineur_nom` varchar(50) NOT NULL,
   `entraineur_prenom` varchar(50) NOT NULL,
   `entraineur_adjoint_nom` varchar(50) NOT NULL,
@@ -107,15 +106,15 @@ CREATE TABLE `equipes` (
 -- Déchargement des données de la table `equipes`
 --
 
-INSERT INTO `equipes` (`id_equipe`, `nb_match_joues`, `nb_match_gagnes`, `nb_match_egalites`, `prenom_entraineur`, `entraineur_nom`, `entraineur_prenom`, `entraineur_adjoint_nom`, `entraineur_adjoint_prenom`, `id_club`) VALUES
-(1, 0, 0, 0, '', '', '', '', '', 1),
-(2, 0, 0, 0, '', '', '', '', '', 4),
-(3, 0, 0, 0, '', '', '', '', '', 2),
-(4, 0, 0, 0, '', '', '', '', '', 5),
-(5, 0, 0, 0, '', '', '', '', '', 3),
-(6, 0, 0, 0, '', '', '', '', '', 6),
-(7, 0, 0, 0, '', '', '', '', '', 7),
-(8, 0, 0, 0, '', '', '', '', '', 8);
+INSERT INTO `equipes` (`id_equipe`, `nb_match_joues`, `nb_match_gagnes`, `nb_match_egalites`, `entraineur_nom`, `entraineur_prenom`, `entraineur_adjoint_nom`, `entraineur_adjoint_prenom`, `id_club`) VALUES
+(1, 0, 0, 0, '', '', '', '', 1),
+(2, 0, 0, 0, '', '', '', '', 4),
+(3, 0, 0, 0, '', '', '', '', 2),
+(4, 0, 0, 0, '', '', '', '', 5),
+(5, 0, 0, 0, '', '', '', '', 3),
+(6, 0, 0, 0, '', '', '', '', 6),
+(7, 0, 0, 0, '', '', '', '', 7),
+(8, 0, 0, 0, '', '', '', '', 8);
 
 -- --------------------------------------------------------
 
