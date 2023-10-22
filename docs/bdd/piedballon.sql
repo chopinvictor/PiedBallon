@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : dim. 22 oct. 2023 à 04:44
+-- Généré le : dim. 22 oct. 2023 à 05:03
 -- Version du serveur : 10.4.28-MariaDB
 -- Version de PHP : 8.2.4
 
@@ -45,6 +45,20 @@ CREATE TABLE `arbritres` (
   `prenom` varchar(50) NOT NULL,
   `nationalite_arbitre` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `arbritres`
+--
+
+INSERT INTO `arbritres` (`id_arbitre`, `nom`, `prenom`, `nationalite_arbitre`) VALUES
+(1, 'Turpin', 'Clément', 'France'),
+(2, 'Frappart', 'Stéphanie', 'France'),
+(3, 'Letexier', 'François', 'France'),
+(4, 'Makkelie', 'Danny', 'Pays-bas'),
+(5, 'Marciniak', 'Szymon', 'Pologne'),
+(6, 'Zitouni', 'Kader', 'Tunisie'),
+(7, 'Marciniak', 'Szymon', 'Pologne'),
+(8, 'Zwayer', 'Felix', 'Allemagne');
 
 -- --------------------------------------------------------
 
@@ -107,14 +121,14 @@ CREATE TABLE `equipes` (
 --
 
 INSERT INTO `equipes` (`id_equipe`, `nb_match_joues`, `nb_match_gagnes`, `nb_match_egalites`, `entraineur_nom`, `entraineur_prenom`, `entraineur_adjoint_nom`, `entraineur_adjoint_prenom`, `id_club`) VALUES
-(1, 0, 0, 0, '', '', '', '', 1),
-(2, 0, 0, 0, '', '', '', '', 4),
-(3, 0, 0, 0, '', '', '', '', 2),
-(4, 0, 0, 0, '', '', '', '', 5),
-(5, 0, 0, 0, '', '', '', '', 3),
-(6, 0, 0, 0, '', '', '', '', 6),
-(7, 0, 0, 0, '', '', '', '', 7),
-(8, 0, 0, 0, '', '', '', '', 8);
+(1, 9, 2, 4, 'Elsner', 'Luka', 'Costa', 'Serge', 1),
+(2, 10, 3, 5, 'Martinez', 'Carles', 'Galtier', 'Jordan ', 4),
+(3, 11, 6, 3, 'Enrique', 'Luis', 'Al-Khelaïfi', 'Nasser', 2),
+(4, 8, 3, 3, 'Der Zakarian', 'Michel', 'Rizzetto', 'Franck', 5),
+(5, 11, 1, 7, 'Le Bris', 'Régis', 'Goetze', 'Ingo', 3),
+(6, 11, 3, 5, 'Haise', 'Franck', 'Ramaré', 'Johann', 6),
+(7, 8, 3, 0, 'Grosso', 'Fabio', 'Vulliez', 'Jean-François', 7),
+(8, 9, 5, 4, 'Farioli', 'Francesco', 'Sablé', 'Julien', 8);
 
 -- --------------------------------------------------------
 
@@ -587,7 +601,7 @@ ALTER TABLE `utilisateurs`
 -- AUTO_INCREMENT pour la table `arbritres`
 --
 ALTER TABLE `arbritres`
-  MODIFY `id_arbitre` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_arbitre` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT pour la table `buts`
