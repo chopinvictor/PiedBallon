@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : dim. 22 oct. 2023 à 00:05
+-- Généré le : dim. 22 oct. 2023 à 02:05
 -- Version du serveur : 10.4.28-MariaDB
 -- Version de PHP : 8.2.4
 
@@ -179,18 +179,9 @@ CREATE TABLE `joueurs` (
   `nom` varchar(50) NOT NULL,
   `prenom` varchar(50) NOT NULL,
   `nationalite_joueur` varchar(50) NOT NULL,
-  `club` varchar(50) NOT NULL,
   `numero` int(11) NOT NULL,
   `id_equipe` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Déchargement des données de la table `joueurs`
---
-
-INSERT INTO `joueurs` (`id_joueur`, `nom`, `prenom`, `nationalite_joueur`, `club`, `numero`, `id_equipe`) VALUES
-(1, 'haaland', 'erling', 'norvège', 'manchester city', 9, 1),
-(2, 'benzema', 'karim', 'france', 'real madrid', 9, 7);
 
 -- --------------------------------------------------------
 
@@ -462,7 +453,7 @@ ALTER TABLE `fautes`
 -- AUTO_INCREMENT pour la table `joueurs`
 --
 ALTER TABLE `joueurs`
-  MODIFY `id_joueur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_joueur` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT pour la table `matchs`
