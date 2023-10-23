@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : lun. 23 oct. 2023 à 21:00
+-- Généré le : lun. 23 oct. 2023 à 21:09
 -- Version du serveur : 10.4.28-MariaDB
 -- Version de PHP : 8.2.4
 
@@ -188,7 +188,9 @@ CREATE TABLE `fautes` (
   `id_faute` int(11) NOT NULL,
   `est_fautif` tinyint(1) NOT NULL,
   `id_joueur` int(11) NOT NULL,
-  `id_evenement` int(11) NOT NULL
+  `id_evenement` int(11) NOT NULL,
+  `carton_jaune` tinyint(1) NOT NULL,
+  `carton_rouge` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
