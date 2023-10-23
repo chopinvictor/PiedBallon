@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : lun. 23 oct. 2023 à 22:08
+-- Généré le : lun. 23 oct. 2023 à 22:14
 -- Version du serveur : 10.4.28-MariaDB
 -- Version de PHP : 8.2.4
 
@@ -185,26 +185,26 @@ INSERT INTO `evenements` (`id_evenement`, `horodatage`, `id_match`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `fait_faute`
---
-
-CREATE TABLE `fait_faute` (
-  `id_joueur` int(11) NOT NULL,
-  `id_faute` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
 -- Structure de la table `fautes`
 --
 
 CREATE TABLE `fautes` (
   `id_faute` int(11) NOT NULL,
-  `est_fautif` tinyint(1) NOT NULL,
   `carton_jaune` tinyint(1) DEFAULT NULL,
   `carton_rouge` tinyint(1) DEFAULT NULL,
   `id_evenement` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `faute_joueurs`
+--
+
+CREATE TABLE `faute_joueurs` (
+  `id_joueur` int(11) NOT NULL,
+  `id_faute` int(11) NOT NULL,
+  `est_fautif` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -534,27 +534,27 @@ CREATE TABLE `questions_securite` (
 
 CREATE TABLE `remplace` (
   `id_joueur` int(11) NOT NULL,
-  `id_remplacement` int(11) NOT NULL,
-  `est_remplacé` tinyint(1) NOT NULL
+  `est_remplacé` tinyint(1) NOT NULL,
+  `id_remplacement` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `remplace`
 --
 
-INSERT INTO `remplace` (`id_joueur`, `id_remplacement`, `est_remplacé`) VALUES
-(9, 3, 1),
-(10, 5, 1),
-(11, 4, 1),
-(12, 3, 0),
-(13, 5, 0),
-(14, 4, 0),
+INSERT INTO `remplace` (`id_joueur`, `est_remplacé`, `id_remplacement`) VALUES
+(9, 1, 3),
+(10, 1, 5),
+(11, 1, 4),
+(12, 0, 3),
+(13, 0, 5),
+(14, 0, 4),
 (33, 1, 1),
-(34, 2, 1),
-(35, 6, 1),
-(36, 1, 0),
-(37, 2, 0),
-(38, 6, 0);
+(34, 1, 2),
+(35, 1, 6),
+(36, 0, 1),
+(37, 0, 2),
+(38, 0, 6);
 
 -- --------------------------------------------------------
 
@@ -659,18 +659,18 @@ ALTER TABLE `evenements`
   ADD KEY `id_match` (`id_match`);
 
 --
--- Index pour la table `fait_faute`
---
-ALTER TABLE `fait_faute`
-  ADD PRIMARY KEY (`id_joueur`,`id_faute`),
-  ADD KEY `id_faute` (`id_faute`);
-
---
 -- Index pour la table `fautes`
 --
 ALTER TABLE `fautes`
   ADD PRIMARY KEY (`id_faute`),
   ADD UNIQUE KEY `id_evenement` (`id_evenement`);
+
+--
+-- Index pour la table `faute_joueurs`
+--
+ALTER TABLE `faute_joueurs`
+  ADD PRIMARY KEY (`id_joueur`,`id_faute`),
+  ADD KEY `id_faute` (`id_faute`);
 
 --
 -- Index pour la table `joue`
@@ -777,7 +777,7 @@ ALTER TABLE `evenements`
 -- AUTO_INCREMENT pour la table `fautes`
 --
 ALTER TABLE `fautes`
-  MODIFY `id_faute` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_faute` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT pour la table `joueurs`
@@ -853,17 +853,17 @@ ALTER TABLE `evenements`
   ADD CONSTRAINT `evenements_ibfk_1` FOREIGN KEY (`id_match`) REFERENCES `matchs` (`id_match`);
 
 --
--- Contraintes pour la table `fait_faute`
---
-ALTER TABLE `fait_faute`
-  ADD CONSTRAINT `fait_faute_ibfk_1` FOREIGN KEY (`id_joueur`) REFERENCES `joueurs` (`id_joueur`),
-  ADD CONSTRAINT `fait_faute_ibfk_2` FOREIGN KEY (`id_faute`) REFERENCES `fautes` (`id_faute`);
-
---
 -- Contraintes pour la table `fautes`
 --
 ALTER TABLE `fautes`
   ADD CONSTRAINT `fautes_ibfk_1` FOREIGN KEY (`id_evenement`) REFERENCES `evenements` (`id_evenement`);
+
+--
+-- Contraintes pour la table `faute_joueurs`
+--
+ALTER TABLE `faute_joueurs`
+  ADD CONSTRAINT `faute_joueurs_ibfk_1` FOREIGN KEY (`id_joueur`) REFERENCES `joueurs` (`id_joueur`),
+  ADD CONSTRAINT `faute_joueurs_ibfk_2` FOREIGN KEY (`id_faute`) REFERENCES `fautes` (`id_faute`);
 
 --
 -- Contraintes pour la table `joue`
