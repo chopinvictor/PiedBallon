@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : lun. 23 oct. 2023 à 20:09
+-- Généré le : lun. 23 oct. 2023 à 21:00
 -- Version du serveur : 10.4.28-MariaDB
 -- Version de PHP : 8.2.4
 
@@ -72,6 +72,15 @@ CREATE TABLE `buts` (
   `id_joueur` int(11) NOT NULL,
   `id_evenement` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `buts`
+--
+
+INSERT INTO `buts` (`id_but`, `nom_buteur`, `id_joueur`, `id_evenement`) VALUES
+(1, 'Gorgelin', 1, 7),
+(2, 'Desmas', 2, 8),
+(3, 'Gautier', 3, 9);
 
 -- --------------------------------------------------------
 
@@ -154,6 +163,21 @@ CREATE TABLE `evenements` (
   `id_match` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Déchargement des données de la table `evenements`
+--
+
+INSERT INTO `evenements` (`id_evenement`, `horodatage`, `id_match`) VALUES
+(1, 14, 1),
+(2, 34, 1),
+(3, 35, 1),
+(4, 49, 1),
+(5, 62, 1),
+(6, 72, 1),
+(7, 14, 1),
+(8, 33, 1),
+(9, 68, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -201,7 +225,21 @@ INSERT INTO `joue` (`id_joueur`, `id_poste`, `titulaire`, `capitaine`, `entree`,
 (11, 50, 1, NULL, 1, 49, NULL),
 (12, 51, 0, NULL, 35, 90, 1),
 (13, 52, 0, NULL, 62, 90, 1),
-(14, 53, 0, NULL, 49, 90, 1);
+(14, 53, 0, NULL, 49, 90, 1),
+(25, 40, 1, 1, 1, 90, NULL),
+(26, 41, 1, NULL, 1, 90, NULL),
+(27, 42, 1, NULL, 1, 90, NULL),
+(28, 43, 1, NULL, 1, 90, NULL),
+(29, 44, 1, NULL, 1, 90, NULL),
+(30, 45, 1, NULL, 1, 90, NULL),
+(31, 46, 1, NULL, 1, 90, NULL),
+(32, 47, 1, NULL, 1, 90, NULL),
+(33, 48, 1, NULL, 1, 14, NULL),
+(34, 49, 1, NULL, 1, 34, NULL),
+(35, 50, 1, NULL, 1, 72, NULL),
+(36, 51, 0, NULL, 14, 90, 1),
+(37, 52, 0, NULL, 34, 90, 1),
+(38, 53, 0, NULL, 72, 90, 1);
 
 -- --------------------------------------------------------
 
@@ -254,7 +292,7 @@ INSERT INTO `joueurs` (`id_joueur`, `nom`, `prenom`, `nationalite_joueur`, `nume
 (29, 'Donnarumma', 'Gianluigi', 'Italie', 5, 3),
 (30, 'Pedrito', 'Marquinhos', 'Brésil', 15, 3),
 (31, 'Skriniar', 'Milan', 'Slovaquie', 23, 3),
-(32, 'Kimpembe', 'Presnel', 'nationalite_joueur', 26, 3),
+(32, 'Kimpembe', 'Presnel', 'France', 26, 3),
 (33, 'Mukiele', 'Nordi', 'France', 19, 3),
 (34, 'Hakimi', 'Achraf', 'Maroc', 14, 3),
 (35, 'Kurzawa', 'Layvin', 'France', 33, 3),
@@ -283,7 +321,7 @@ INSERT INTO `joueurs` (`id_joueur`, `nom`, `prenom`, `nationalite_joueur`, `nume
 (58, 'Atal', 'Youcef', 'Algérie', 14, 3),
 (59, 'Amraoui', 'Ayoub', 'Maroc', 16, 3),
 (60, 'Perraud', 'Romain', 'France', 29, 3),
-(61, 'Bard', 'Melvin', 'nationalite_joueur', 44, 3),
+(61, 'Bard', 'Melvin', 'France', 44, 3),
 (62, 'Ndayishimiye', 'Youssouf', 'Burundi', 33, 3),
 (63, 'Sirigu', 'Salvatore', 'Italie', 8, 3),
 (64, 'Boulhendi', 'Teddy', 'Algérie', 17, 3),
@@ -295,7 +333,7 @@ INSERT INTO `joueurs` (`id_joueur`, `nom`, `prenom`, `nationalite_joueur`, `nume
 (70, 'Atal', 'Youcef', 'Algérie', 14, 3),
 (71, 'Amraoui', 'Ayoub', 'Maroc', 16, 3),
 (72, 'Perraud', 'Romain', 'France', 29, 3),
-(73, 'Bard', 'Melvin', 'nationalite_joueur', 10, 3),
+(73, 'Bard', 'Melvin', 'France', 10, 3),
 (74, 'Ndayishimiye', 'Youssouf', 'Burundi', 33, 3),
 (75, 'Thuram', 'Khéphren', 'France', 20, 3),
 (76, 'Sanson', 'Morgan', 'France', 36, 3),
@@ -483,6 +521,24 @@ CREATE TABLE `remplace` (
   `id_remplacement` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Déchargement des données de la table `remplace`
+--
+
+INSERT INTO `remplace` (`id_joueur`, `est_remplacé`, `id_remplacement`) VALUES
+(9, 1, 3),
+(10, 1, 5),
+(11, 1, 4),
+(12, 0, 3),
+(13, 0, 5),
+(14, 0, 4),
+(33, 1, 1),
+(34, 1, 2),
+(35, 1, 6),
+(36, 0, 1),
+(37, 0, 2),
+(38, NULL, 6);
+
 -- --------------------------------------------------------
 
 --
@@ -493,6 +549,18 @@ CREATE TABLE `remplacements` (
   `id_remplacement` int(11) NOT NULL,
   `id_evenement` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `remplacements`
+--
+
+INSERT INTO `remplacements` (`id_remplacement`, `id_evenement`) VALUES
+(1, 1),
+(2, 2),
+(3, 3),
+(4, 4),
+(5, 5),
+(6, 6);
 
 -- --------------------------------------------------------
 
@@ -662,7 +730,7 @@ ALTER TABLE `arbritres`
 -- AUTO_INCREMENT pour la table `buts`
 --
 ALTER TABLE `buts`
-  MODIFY `id_but` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_but` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT pour la table `clubs`
@@ -680,7 +748,7 @@ ALTER TABLE `equipes`
 -- AUTO_INCREMENT pour la table `evenements`
 --
 ALTER TABLE `evenements`
-  MODIFY `id_evenement` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_evenement` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT pour la table `fautes`
@@ -716,7 +784,7 @@ ALTER TABLE `questions_securite`
 -- AUTO_INCREMENT pour la table `remplacements`
 --
 ALTER TABLE `remplacements`
-  MODIFY `id_remplacement` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_remplacement` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT pour la table `utilisateurs`
