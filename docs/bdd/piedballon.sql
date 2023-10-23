@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : lun. 23 oct. 2023 à 21:09
+-- Généré le : lun. 23 oct. 2023 à 21:41
 -- Version du serveur : 10.4.28-MariaDB
 -- Version de PHP : 8.2.4
 
@@ -176,7 +176,10 @@ INSERT INTO `evenements` (`id_evenement`, `horodatage`, `id_match`) VALUES
 (6, 72, 1),
 (7, 14, 1),
 (8, 33, 1),
-(9, 68, 1);
+(9, 68, 1),
+(10, 14, 1),
+(11, 34, 1),
+(12, 68, 1);
 
 -- --------------------------------------------------------
 
@@ -539,7 +542,7 @@ INSERT INTO `remplace` (`id_joueur`, `est_remplacé`, `id_remplacement`) VALUES
 (35, 1, 6),
 (36, 0, 1),
 (37, 0, 2),
-(38, NULL, 6);
+(38, 0, 6);
 
 -- --------------------------------------------------------
 
@@ -750,13 +753,13 @@ ALTER TABLE `equipes`
 -- AUTO_INCREMENT pour la table `evenements`
 --
 ALTER TABLE `evenements`
-  MODIFY `id_evenement` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_evenement` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT pour la table `fautes`
 --
 ALTER TABLE `fautes`
-  MODIFY `id_faute` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_faute` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT pour la table `joueurs`
