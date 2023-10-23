@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : lun. 23 oct. 2023 à 21:57
+-- Généré le : lun. 23 oct. 2023 à 22:08
 -- Version du serveur : 10.4.28-MariaDB
 -- Version de PHP : 8.2.4
 
@@ -777,7 +777,7 @@ ALTER TABLE `evenements`
 -- AUTO_INCREMENT pour la table `fautes`
 --
 ALTER TABLE `fautes`
-  MODIFY `id_faute` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_faute` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT pour la table `joueurs`
