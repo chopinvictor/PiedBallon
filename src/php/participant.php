@@ -14,7 +14,6 @@ if(empty($_SESSION)){
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/participant.css">
@@ -68,12 +67,10 @@ if(empty($_SESSION)){
             </li>
         </ul>
     </div>
-
 </nav>
 
 
 <body>
-
     <section class="parametre all_Participant">
         <div class="principal arbitre">
             <h2>Arbitres</h2>
@@ -170,7 +167,7 @@ if(empty($_SESSION)){
                         <h3>Numéro de Maillot</h3>
                         <input type="text">
                     </div>
-                
+
                     <button class="save_player">Enregistré</button>
                 </div>
             </div>
@@ -203,7 +200,7 @@ if(empty($_SESSION)){
                         <h3>Numéro de Maillot</h3>
                         <input type="text">
                     </div>
-                
+
                     <button class="save_player">Enregistré</button>
                 </div>
                 </div>
@@ -256,7 +253,6 @@ if(empty($_SESSION)){
         </div>
 
     </section>
-
 </body>
 
 <hide class="hide">

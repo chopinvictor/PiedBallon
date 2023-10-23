@@ -20,7 +20,6 @@ if(empty($_SESSION)){
 
 
 <nav>
-
     <div class="navigation">
         <ul class="ul_nav">
             <li>
@@ -67,7 +66,6 @@ if(empty($_SESSION)){
             </li>
         </ul>
     </div>
-
 </nav>
 
 <body>
