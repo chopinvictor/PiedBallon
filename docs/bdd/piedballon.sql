@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : lun. 23 oct. 2023 à 19:57
+-- Généré le : lun. 23 oct. 2023 à 20:09
 -- Version du serveur : 10.4.28-MariaDB
 -- Version de PHP : 8.2.4
 
@@ -182,6 +182,26 @@ CREATE TABLE `joue` (
   `sortie` int(11) NOT NULL,
   `remplacant` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `joue`
+--
+
+INSERT INTO `joue` (`id_joueur`, `id_poste`, `titulaire`, `capitaine`, `entree`, `sortie`, `remplacant`) VALUES
+(1, 40, 1, 1, 1, 90, NULL),
+(2, 41, 1, NULL, 1, 90, NULL),
+(3, 42, 1, NULL, 1, 90, NULL),
+(4, 43, 1, NULL, 1, 90, NULL),
+(5, 44, 1, NULL, 1, 90, NULL),
+(6, 45, 1, NULL, 1, 90, NULL),
+(7, 46, 1, NULL, 1, 90, NULL),
+(8, 47, 1, NULL, 1, 90, NULL),
+(9, 48, 1, NULL, 1, 35, NULL),
+(10, 49, 1, NULL, 1, 62, NULL),
+(11, 50, 1, NULL, 1, 49, NULL),
+(12, 51, 0, NULL, 35, 90, 1),
+(13, 52, 0, NULL, 62, 90, 1),
+(14, 53, 0, NULL, 49, 90, 1);
 
 -- --------------------------------------------------------
 
@@ -435,7 +455,10 @@ INSERT INTO `postes` (`id_poste`, `poste`, `id_match`) VALUES
 (47, 'Milieu gauche', 1),
 (48, 'Milieu droit', 1),
 (49, 'Avant centre gauche', 1),
-(50, 'Avant centre droit', 1);
+(50, 'Avant centre droit', 1),
+(51, 'Milieu droit', 1),
+(52, 'Avant-centre gauche', 1),
+(53, 'Avant-centre droit', 1);
 
 -- --------------------------------------------------------
 
@@ -681,7 +704,7 @@ ALTER TABLE `matchs`
 -- AUTO_INCREMENT pour la table `postes`
 --
 ALTER TABLE `postes`
-  MODIFY `id_poste` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+  MODIFY `id_poste` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 
 --
 -- AUTO_INCREMENT pour la table `questions_securite`
