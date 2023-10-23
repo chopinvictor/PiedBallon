@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : lun. 23 oct. 2023 à 22:33
+-- Généré le : lun. 23 oct. 2023 à 22:36
 -- Version du serveur : 10.4.28-MariaDB
 -- Version de PHP : 8.2.4
 
@@ -32,6 +32,15 @@ CREATE TABLE `arbitre_match` (
   `id_match` int(11) NOT NULL,
   `est_principal` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `arbitre_match`
+--
+
+INSERT INTO `arbitre_match` (`id_arbitre`, `id_match`, `est_principal`) VALUES
+(1, 1, 1),
+(2, 1, NULL),
+(3, 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -151,6 +160,14 @@ CREATE TABLE `equipe_joue` (
   `id_match` int(11) NOT NULL,
   `domicile` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `equipe_joue`
+--
+
+INSERT INTO `equipe_joue` (`id_equipe`, `id_match`, `domicile`) VALUES
+(1, 1, 0),
+(3, 1, 1);
 
 -- --------------------------------------------------------
 
