@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : lun. 23 oct. 2023 à 18:39
+-- Généré le : lun. 23 oct. 2023 à 19:57
 -- Version du serveur : 10.4.28-MariaDB
 -- Version de PHP : 8.2.4
 
@@ -425,34 +425,17 @@ CREATE TABLE `postes` (
 --
 
 INSERT INTO `postes` (`id_poste`, `poste`, `id_match`) VALUES
-(1, 'Avant-centre gauche', 1),
-(2, 'Avant-centre droit', 1),
-(3, 'Avant-centre gauche', 1),
-(4, 'Avant-centre droit', 1),
-(5, 'Milieu offensif centre', 1),
-(6, 'Milieu offensif centre', 1),
-(7, 'Milieu gauche', 1),
-(8, 'Milieu droit', 1),
-(9, 'Milieu défensif', 1),
-(10, 'Arrière gauche', 1),
-(11, 'Arrière droit', 1),
-(12, 'Défenseur central gauche', 1),
-(13, 'Défenseur central droit', 1),
-(14, 'Gardien', 1),
-(15, 'Avant-centre gauche', 1),
-(16, 'Avant-centre droit', 1),
-(17, 'Avant-centre gauche', 1),
-(18, 'Avant-centre droit', 1),
-(19, 'Milieu offensif centre', 1),
-(20, 'Milieu offensif centre', 1),
-(21, 'Milieu gauche', 1),
-(22, 'Milieu droit', 1),
-(23, 'Milieu défensif', 1),
-(24, 'Arrière gauche', 1),
-(25, 'Arrière droit', 1),
-(26, 'Défenseur central gauche', 1),
-(27, 'Défenseur central droit', 1),
-(28, 'Gardien', 1);
+(40, 'Gardien', 1),
+(41, 'Défenseur central gauche', 1),
+(42, 'Défenseur central droit', 1),
+(43, 'Arrière gauche', 1),
+(44, 'Arrière droit', 1),
+(45, 'Milieu défensif', 1),
+(46, 'Milieu offensif', 1),
+(47, 'Milieu gauche', 1),
+(48, 'Milieu droit', 1),
+(49, 'Avant centre gauche', 1),
+(50, 'Avant centre droit', 1);
 
 -- --------------------------------------------------------
 
@@ -698,7 +681,7 @@ ALTER TABLE `matchs`
 -- AUTO_INCREMENT pour la table `postes`
 --
 ALTER TABLE `postes`
-  MODIFY `id_poste` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id_poste` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT pour la table `questions_securite`
