@@ -1,6 +1,6 @@
 <?php
 
-require_once('../php/bdd.php');
+require_once('../../php/bdd.php');
 
 define('APP_NAME', 'Pied Ballon');
 
@@ -15,8 +15,10 @@ function read_all($db)
 	}
 	$return->closeCursor();
 
-	return json_encode($result);
+	// return json_encode($result);
+	$result;
 }
 
-header('Content-Type: application/json');
-echo read_all($db);
+// header('Content-Type: application/json');
+// echo read_all($db);
+var_dump(read_all($db));
