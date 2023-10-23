@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : lun. 23 oct. 2023 à 22:14
+-- Généré le : lun. 23 oct. 2023 à 22:33
 -- Version du serveur : 10.4.28-MariaDB
 -- Version de PHP : 8.2.4
 
@@ -195,6 +195,15 @@ CREATE TABLE `fautes` (
   `id_evenement` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Déchargement des données de la table `fautes`
+--
+
+INSERT INTO `fautes` (`id_faute`, `carton_jaune`, `carton_rouge`, `id_evenement`) VALUES
+(1, 1, NULL, 10),
+(2, 0, 1, 11),
+(3, 0, 0, 12);
+
 -- --------------------------------------------------------
 
 --
@@ -206,6 +215,18 @@ CREATE TABLE `faute_joueurs` (
   `id_faute` int(11) NOT NULL,
   `est_fautif` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `faute_joueurs`
+--
+
+INSERT INTO `faute_joueurs` (`id_joueur`, `id_faute`, `est_fautif`) VALUES
+(10, 3, 1),
+(16, 2, 0),
+(18, 1, 0),
+(33, 1, 1),
+(34, 2, 1),
+(67, 3, 0);
 
 -- --------------------------------------------------------
 
@@ -777,7 +798,7 @@ ALTER TABLE `evenements`
 -- AUTO_INCREMENT pour la table `fautes`
 --
 ALTER TABLE `fautes`
-  MODIFY `id_faute` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_faute` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT pour la table `joueurs`
