@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : dim. 22 oct. 2023 à 05:03
+-- Généré le : lun. 23 oct. 2023 à 18:39
 -- Version du serveur : 10.4.28-MariaDB
 -- Version de PHP : 8.2.4
 
@@ -382,6 +382,13 @@ CREATE TABLE `matchs` (
   `est_fini` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Déchargement des données de la table `matchs`
+--
+
+INSERT INTO `matchs` (`id_match`, `date_match`, `lieu_match`, `score_equipe_1`, `score_equipe_2`, `est_fini`) VALUES
+(1, '2023-10-18 18:00:00', 'Parc des Princes', 3, 0, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -392,6 +399,14 @@ CREATE TABLE `participe` (
   `id_club` int(11) NOT NULL,
   `id_match` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `participe`
+--
+
+INSERT INTO `participe` (`id_club`, `id_match`) VALUES
+(1, 1),
+(2, 1);
 
 -- --------------------------------------------------------
 
@@ -404,6 +419,40 @@ CREATE TABLE `postes` (
   `poste` varchar(50) NOT NULL,
   `id_match` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `postes`
+--
+
+INSERT INTO `postes` (`id_poste`, `poste`, `id_match`) VALUES
+(1, 'Avant-centre gauche', 1),
+(2, 'Avant-centre droit', 1),
+(3, 'Avant-centre gauche', 1),
+(4, 'Avant-centre droit', 1),
+(5, 'Milieu offensif centre', 1),
+(6, 'Milieu offensif centre', 1),
+(7, 'Milieu gauche', 1),
+(8, 'Milieu droit', 1),
+(9, 'Milieu défensif', 1),
+(10, 'Arrière gauche', 1),
+(11, 'Arrière droit', 1),
+(12, 'Défenseur central gauche', 1),
+(13, 'Défenseur central droit', 1),
+(14, 'Gardien', 1),
+(15, 'Avant-centre gauche', 1),
+(16, 'Avant-centre droit', 1),
+(17, 'Avant-centre gauche', 1),
+(18, 'Avant-centre droit', 1),
+(19, 'Milieu offensif centre', 1),
+(20, 'Milieu offensif centre', 1),
+(21, 'Milieu gauche', 1),
+(22, 'Milieu droit', 1),
+(23, 'Milieu défensif', 1),
+(24, 'Arrière gauche', 1),
+(25, 'Arrière droit', 1),
+(26, 'Défenseur central gauche', 1),
+(27, 'Défenseur central droit', 1),
+(28, 'Gardien', 1);
 
 -- --------------------------------------------------------
 
@@ -643,13 +692,13 @@ ALTER TABLE `joueurs`
 -- AUTO_INCREMENT pour la table `matchs`
 --
 ALTER TABLE `matchs`
-  MODIFY `id_match` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_match` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT pour la table `postes`
 --
 ALTER TABLE `postes`
-  MODIFY `id_poste` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_poste` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT pour la table `questions_securite`
