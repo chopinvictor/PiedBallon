@@ -11,7 +11,20 @@ class Matchfoot
 	public $lieu_match;
 	public $score_equipe_1;
 	public $score_equipe_2;
+	public $nom_equipe_1;
+	public $nom_equipe_2;
+	public $entraineur_nom_e1;
+	public $entraineur_nom_e2;
+	public $entraineur_prenom_e1;
+	public $entraineur_prenom_e2;
+	public $entraineur_adjoint_nom_e1;
+	public $entraineur_adjoint_nom_e2;
+	public $entraineur_adjoint_prenom_e1;
+	public $entraineur_adjoint_prenom_e2;
+	public $id_club_e1;
+	public $id_club_e2;
 	public $est_fini;
+	public $arbitres = [];
 
 	// constructeur avec connexion à la BDD
 	public function __construct($db)
@@ -20,9 +33,23 @@ class Matchfoot
 	}
 
 	// récupération des matchs
+	// public function readAllMatch()
+	// {
+	// 	$query = 'SELECT matchs.*, SUBSTRING_INDEX(GROUP_CONCAT(clubs.lieu ORDER BY eq.id_equipe ASC), ",", 1) AS nom_club_1, SUBSTRING_INDEX(GROUP_CONCAT(clubs.lieu ORDER BY eq.id_equipe DESC), ",", 1) AS nom_club_2
+	// 			FROM matchs
+	// 			INNER JOIN equipe_joue AS eq ON matchs.id_match = eq.id_match
+	// 			INNER JOIN clubs ON eq.id_equipe = clubs.id_club
+	// 			GROUP BY matchs.id_match';
+	// 	$stmt = $this->conn->prepare($query);
+	// 	$stmt->execute();
+
+	// 	return $stmt;
+	// }
 	public function readAllMatch()
 	{
-		$query = 'SELECT matchs.*, SUBSTRING_INDEX(GROUP_CONCAT(clubs.lieu ORDER BY eq.id_equipe ASC), ",", 1) AS nom_club_1, SUBSTRING_INDEX(GROUP_CONCAT(clubs.lieu ORDER BY eq.id_equipe DESC), ",", 1) AS nom_club_2
+		$query = 'SELECT matchs.*,
+		SUBSTRING_INDEX(GROUP_CONCAT(clubs.lieu ORDER BY eq.id_equipe ASC), ",", 1) AS nom_club_1,
+		SUBSTRING_INDEX(GROUP_CONCAT(clubs.lieu ORDER BY eq.id_equipe DESC), ",", 1) AS nom_club_2
 				FROM matchs
 				INNER JOIN equipe_joue AS eq ON matchs.id_match = eq.id_match
 				INNER JOIN clubs ON eq.id_equipe = clubs.id_club
