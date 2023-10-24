@@ -45,10 +45,10 @@ INSERT INTO `arbitre_match` (`id_arbitre`, `id_match`, `est_principal`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `arbritres`
+-- Structure de la table `arbitres`
 --
 
-CREATE TABLE `arbritres` (
+CREATE TABLE `arbitres` (
   `id_arbitre` int(11) NOT NULL,
   `nom` varchar(50) NOT NULL,
   `prenom` varchar(50) NOT NULL,
@@ -56,10 +56,10 @@ CREATE TABLE `arbritres` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Déchargement des données de la table `arbritres`
+-- Déchargement des données de la table `arbitres`
 --
 
-INSERT INTO `arbritres` (`id_arbitre`, `nom`, `prenom`, `nationalite_arbitre`) VALUES
+INSERT INTO `arbitres` (`id_arbitre`, `nom`, `prenom`, `nationalite_arbitre`) VALUES
 (1, 'Turpin', 'Clément', 'France'),
 (2, 'Frappart', 'Stéphanie', 'France'),
 (3, 'Letexier', 'François', 'France'),
@@ -678,9 +678,9 @@ ALTER TABLE `arbitre_match`
   ADD KEY `id_match` (`id_match`);
 
 --
--- Index pour la table `arbritres`
+-- Index pour la table `arbitres`
 --
-ALTER TABLE `arbritres`
+ALTER TABLE `arbitres`
   ADD PRIMARY KEY (`id_arbitre`);
 
 --
@@ -810,9 +810,9 @@ ALTER TABLE `utilisateurs`
 --
 
 --
--- AUTO_INCREMENT pour la table `arbritres`
+-- AUTO_INCREMENT pour la table `arbitres`
 --
-ALTER TABLE `arbritres`
+ALTER TABLE `arbitres`
   MODIFY `id_arbitre` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
@@ -895,7 +895,7 @@ ALTER TABLE `utilisateurs`
 -- Contraintes pour la table `arbitre_match`
 --
 ALTER TABLE `arbitre_match`
-  ADD CONSTRAINT `arbitre_match_ibfk_1` FOREIGN KEY (`id_arbitre`) REFERENCES `arbritres` (`id_arbitre`),
+  ADD CONSTRAINT `arbitre_match_ibfk_1` FOREIGN KEY (`id_arbitre`) REFERENCES `arbitres` (`id_arbitre`),
   ADD CONSTRAINT `arbitre_match_ibfk_2` FOREIGN KEY (`id_match`) REFERENCES `matchs` (`id_match`);
 
 --

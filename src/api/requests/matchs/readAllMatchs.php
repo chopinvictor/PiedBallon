@@ -28,7 +28,9 @@ if ($num > 0) {
 			'lieu_match' => $lieu_match,
 			'score_equipe_1' => $score_equipe_1,
 			'score_equipe_2' => $score_equipe_2,
-			'est_fini' => $est_fini
+			'est_fini' => $est_fini,
+			'nom_club_1' => $nom_club_1,
+			'nom_club_2' => $nom_club_2
 		];
 		array_push($match_arr['data'], $match_item);
 	}

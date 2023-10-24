@@ -22,7 +22,11 @@ class Matchfoot
 	// récupération des matchs
 	public function readAllMatch()
 	{
-		$query = 'SELECT * FROM matchs ';
+		$query = 'SELECT matchs.*, SUBSTRING_INDEX(GROUP_CONCAT(clubs.lieu ORDER BY eq.id_equipe ASC), ",", 1) AS nom_club_1, SUBSTRING_INDEX(GROUP_CONCAT(clubs.lieu ORDER BY eq.id_equipe DESC), ",", 1) AS nom_club_2
+				FROM matchs
+				INNER JOIN equipe_joue AS eq ON matchs.id_match = eq.id_match
+				INNER JOIN clubs ON eq.id_equipe = clubs.id_club
+				GROUP BY matchs.id_match';
 		$stmt = $this->conn->prepare($query);
 		$stmt->execute();
 
