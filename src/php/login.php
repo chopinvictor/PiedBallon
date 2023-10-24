@@ -6,7 +6,7 @@ require_once('fonctions.php');
 $return = null;
 
 if (isset($_POST['send'])) {
-    if (!empty($_POST['email'] && !empty($_POST['mdp']))) {
+    if (!empty($_POST['email']) && !empty($_POST['mdp'])) {
 
         $query = "SELECT * FROM utilisateurs WHERE adresse_mail =? ";
         

@@ -3,26 +3,27 @@
 
 session_start();
 
+$id_match =2;
 $id_arbitre=1;
 
 if(empty($_SESSION)){
     header("Location: ../php/login.php");
 }
 
-if (isset($_POST['arbitre_send_modif'])) {
+require_once('bdd.php');
 
-    if(!empty($_POST['arbitre_nom_modif'])&& !empty($_POST['arbitre_prenom_modif']) ){
-        header("Location: ../php/participant_arbitre_modif.php?id_arbitre=1&arbitre_nom_modif=".$_POST['arbitre_nom_modif']."&arbitre_prenom_modif=".$_POST['arbitre_prenom_modif']."&arbitre_nationalite_modif=".$_POST['arbitre_nationalite_modif']);
-    }
+$query = "SELECT arbitres.id_arbitre, arbitres.nom, arbitres.prenom
+FROM arbitre_match
+INNER JOIN arbitres ON arbitre_match.id_arbitre = arbitres.id_arbitre
+WHERE arbitre_match.id_match = ?";
 
-}
-if (isset($_POST['arbitre_send_crea'])) {
+$getmatch = $db->prepare($query);
+$getmatch->execute([$id_match]);
 
-    if(!empty($_POST['arbitre_nom_crea'])&& !empty($_POST['arbitre_prenom_crea']) ){
-        header("Location: ../php/participant_arbitre_crea.php?arbitre_nom_crea=".$_POST['arbitre_nom_crea']."&arbitre_prenom_crea=".$_POST['arbitre_prenom_crea']."&arbitre_nationalite_crea=".$_POST['arbitre_nationalite_crea']);
-    }
+$arbitre_match= $getmatch->fetchAll(PDO::FETCH_OBJ);
 
-}
+
+
 
 ?>
 <!DOCTYPE html>
@@ -41,10 +42,12 @@ if (isset($_POST['arbitre_send_crea'])) {
     <div class="navigation">
         <ul class="ul_nav">
             <li>
-                <div class="nav_box">
-                    <svg class="svg_icon" ><use class="svg_nav_all" xlink:href="#svg_presentation"/></svg>
-                    <p>Presentation</p>
-                </div>
+                <a href="../php/club.php">
+                    <div class="nav_box">
+                        <svg class="svg_icon" ><use class="svg_nav_all" xlink:href="#svg_presentation"/></svg>
+                        <p>Presentation</p>
+                    </div>
+                </a>
             </li>
             <li>
                 <a href="../php/general.php">
@@ -92,12 +95,19 @@ if (isset($_POST['arbitre_send_crea'])) {
     <section class="parametre all_Participant">
         <div class="principal arbitre">
             <h2>Arbitres</h2>
-            <div class="card_container">
-                <p class="card_number Division_number">1</p>
-                <p class="card_info Division_name">Fernandez Bellami</p>
-                <button class="button_svg_edit" onclick="ActionPopup('popup_arbitre_edit')"><svg class="svg_icon_edit" ><use class="svg_nav_all" xlink:href="#svg_edit"/></svg></button>
-            </div>
-            <button class="button_principal" onclick="ActionPopup('popup_arbitre')" >Ajouter un arbitre</button>
+            <?php
+                foreach($arbitre_match as $Value) : ;
+                    $nom = $Value->nom;
+                    $prenom = $Value->prenom;
+                    $id = $Value->id_arbitre;
+                    ?>
+                <div class="card_container">
+                    <p class="card_number Division_number">1</p>
+                    <p class="card_info Division_name"><?= $nom." ".$prenom ?></p>
+                    <a href=<?php echo "../php/participant_delete_arbitre.php?id_arbitre=".$id ?>><button class="button_svg_edit" style="color:red;">X</button></a>
+                </div>              
+            <?php endforeach ?>
+            <a href="../php/participant_add_arbitre.php"><button class="button_principal">Ajouter un arbitre</button></a>
         </div>
         <div class="principal equipe_1">
             <h2>Equipe 1</h2>
@@ -222,67 +232,6 @@ if (isset($_POST['arbitre_send_crea'])) {
                     <button class="save_player">Enregistré</button>
                 </div>
                 </div>
-            </div>
-        </div>
-        <!-- creation de la popup pour la modification des arbitre -->
-        <div class="add_player" id="popup_arbitre">
-            <button class="btn_close" onclick="ActionPopup('popup_arbitre')"><svg class="svg_icon_edit" ><use class="svg_nav_all" xlink:href="#svg_close"/></svg></button>
-            <h1>Création d'un Arbitre</h1>
-            <form action="" method="POST" class="form">
-                <div class="input_container">
-                    <div class="input_card">
-                        <div class="name_player">
-                            <h3>Nom</h3>
-                            <input name="arbitre_nom_crea" type="text">
-                        </div>
-                        <div class="name_player">
-                            <h3>Prénom</h3>
-                            <input name="arbitre_prenom_crea" type="text">
-                        </div>
-                        <div class="name_player">
-                            <label for="arbitre_nationalite_crea" >Nationalité</label>
-                                <select name="arbitre_nationalite_crea" id="select_team">
-                                    <option value="France">France</option>
-                                    <option value="France">France</option>
-                                    <option value="France">France</option>
-                                    <option value="France">France</option>
-                                    <option value="France">France</option>
-                                </select>
-                        </div>
-                        <button name="arbitre_send_crea" type="submit" class=" save_player">Enregistré</button>
-                    </div>
-                </div>
-            </form>
-        </div>
-
-        <!-- modification des arbitres  -->
-        <div class="add_player" id="popup_arbitre_edit">
-            <button class="btn_close" onclick="ActionPopup('popup_arbitre_edit')"><svg class="svg_icon_edit" ><use class="svg_nav_all" xlink:href="#svg_close"/></svg></button>
-            <h1>Modification d'un Arbitre</h1>
-            <form class="form" action="" method="POST">
-                <div class="input_container">
-                    <div class="input_card">
-                        <div class="name_player">
-                            <h3>Nom</h3>
-                            <input name="arbitre_nom_modif" type="text">
-                        </div>
-                        <div class="name_player">
-                            <h3>Prénom</h3>
-                            <input name="arbitre_prenom_modif" type="text">
-                        </div>
-                        <div class="name_player">
-                            <label for="arbitre_nationalite_modif" >Nationalité</label>
-                            <select name="arbitre_nationalite_modif" id="select_team">
-                                <option value="France">France</option>
-                                <option value="France">France</option>
-                                <option value="France">France</option>
-                                <option value="France">France</option>
-                                <option value="France">France</option>
-                            </select>
-                        </div>
-                        <button name="arbitre_send_modif" type="submit" class=" save_player">Enregistré</button>
-                    </div>
-                </form>
             </div>
         </div>
 

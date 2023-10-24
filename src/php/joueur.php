@@ -1,20 +1,8 @@
-
+    
 <?php 
 
 
 session_start();
-
-$id_arbitre=3;
-
-
-require_once('bdd.php');
-
-$query = "SELECT * FROM arbitres";
-$getmatch = $db->prepare($query);
-$getmatch->execute();
-
-$arbitre= $getmatch->fetchAll(PDO::FETCH_OBJ);
-
 
 
 
@@ -24,20 +12,38 @@ if(empty($_SESSION)){
     header("Location: ../php/login.php");
 }
 
-if (isset($_POST['arbitre_send_modif'])) {
 
-    if(!empty($_POST['arbitre_nom_modif'])&& !empty($_POST['arbitre_prenom_modif']) ){
-        header("Location: ../php/participant_arbitre_modif.php?id_arbitre=1&arbitre_nom_modif=".$_POST['arbitre_nom_modif']."&arbitre_prenom_modif=".$_POST['arbitre_prenom_modif']."&arbitre_nationalite_modif=".$_POST['arbitre_nationalite_modif']);
+
+require_once('bdd.php');
+
+$id_equipe= $_SESSION['id_equipe'];
+
+
+
+
+
+if (isset($_POST['joueur_crea'])) {
+
+    if(!empty($_POST['joueur_nom_crea']) && !empty($_POST['joueur_prenom_crea']) && !empty($_POST['joueur_num_crea']) ){
+
+        $joueur_prenom_crea =  strip_tags($_POST['joueur_prenom_crea']);
+        $joueur_nom_crea = strip_tags($_POST['joueur_nom_crea']);
+        $joueur_num_crea =  strip_tags($_POST['joueur_num_crea']);
+        $joueur_nationalite_crea =  strip_tags($_POST['joueur_natio_crea']);
+        
+
+        $insertArbitre = $db->prepare('INSERT INTO joueurs(nom,prenom,nationalite_joueur,numero,id_equipe)VALUES(?,?,?,?,?)');
+        $insertArbitre->execute(array($joueur_nom_crea,$joueur_prenom_crea,$joueur_nationalite_crea,$joueur_num_crea,$id_equipe));
     }
 
 }
-if (isset($_POST['arbitre_send_crea'])) {
 
-    if(!empty($_POST['arbitre_nom_crea'])&& !empty($_POST['arbitre_prenom_crea']) ){
-        header("Location: ../php/participant_arbitre_crea.php?arbitre_nom_crea=".$_POST['arbitre_nom_crea']."&arbitre_prenom_crea=".$_POST['arbitre_prenom_crea']."&arbitre_nationalite_crea=".$_POST['arbitre_nationalite_crea']);
-    }
 
-}
+$query = "SELECT * FROM joueurs WHERE id_equipe=?";
+$getmatch = $db->prepare($query);
+$getmatch->execute([$_SESSION['id_equipe']]);
+
+$joueur= $getmatch->fetchAll(PDO::FETCH_OBJ);
 
 ?>
 
@@ -53,99 +59,56 @@ if (isset($_POST['arbitre_send_crea'])) {
     <script src="../js/popup.js"></script>
     <script src="../js/edit.js" ></script>
 </head>
-<nav>
-    <div class="navigation">
-        <ul class="ul_nav">
-            <li>
-                <div class="nav_box">
-                    <svg class="svg_icon" ><use class="svg_nav_all" xlink:href="#svg_presentation"/></svg>
-                    <p>Presentation</p>
-                </div>
-            </li>
-            <li>
-                <a href="../php/general.php">
-                    <div class="nav_box">
-                        <svg class="svg_icon" ><use class="svg_nav_all" xlink:href="#svg_setting"/></svg>
-                        <p>Général</p>
-
-                    </div>
-                </a>
-            </li>
-            <li>
-                <div class="current nav_box">
-                    <svg class="svg_icon" ><use class="svg_nav_all" xlink:href="#svg_participant"/></svg>
-                    <p>Participant</p>
-                </div>
-            </li>
-            <!-- <li>
-                <div class="nav_box">
-                    <svg class="svg_icon" ><use class="svg_nav_all" xlink:href="#svg_classement"/></svg>
-                    <p>Classement</p>
-                </div>
-            </li>
-            <li>
-                <div class="nav_box">
-                    <svg class="svg_icon" ><use class="svg_nav_all" xlink:href="#svg_calendrier"/></svg>
-                    <p>Calendrier</p>
-                </div>
-            </li> -->
-            <li>
-                <a href="../php/match.php">
-                    <div class="nav_box">
-                        <svg class="svg_icon" ><use class="svg_nav_all" xlink:href="#svg_score"/></svg>
-                        <p>Match</p>
-                    </div>
-                </a>
-            </li>
-        </ul>
-    </div>
-
-</nav>
 <body>
 
     <section class="parametre all_Participant">
         <div class="principal arbitre">
-            <h2>Arbitres</h2>
+            <h2>Joueur</h2>
             <?php
-                foreach($arbitre as $Value) : ;
+                foreach($joueur as $Value) : ;
                     $nom = $Value->nom;
                     $prenom = $Value->prenom;
-                    $nationalite = $Value->nationalite_arbitre;
-                    $id_arbitre = $Value->id_arbitre;
+                    $nationalite = $Value->nationalite_joueur;
+                    $numero = $Value->numero;
+                    $id_joueur = $Value->id_joueur;
                     ?>
                     <div class="card_container">
-                        <p class="card_number Division_number">1</p>
+                        <p class="card_number Division_number"><?= $numero ?></p>
                         <p class="card_info Division_name"><?= $nom." ".$prenom ?> </p>
-                        <a href=<?php echo "../php/participant_arbitre_modif.php?id_arbitre=".$id_arbitre ?>><button class="button_svg_edit"><svg class="svg_icon_edit" ><use class="svg_nav_all" xlink:href="#svg_edit"/></svg></button></a>
+                        <a href=<?php echo "../php/joueur_delete.php?id_joueur=".$id_joueur ?>><button class="button_svg_edit" style="font: 1.5em; color:red;" >X</button></a>
                     </div>                
             <?php endforeach ?>
-            <button class="button_principal" onclick="ActionPopup('popup_arbitre')" >Ajouter un arbitre</button>
+            <button class="button_principal" onclick="ActionPopup('popup_arbitre')" >Ajouter un joueur</button>
         </div>
         <div class="add_player" id="popup_arbitre">
             <button class="btn_close" onclick="ActionPopup('popup_arbitre')"><svg class="svg_icon_edit" ><use class="svg_nav_all" xlink:href="#svg_close"/></svg></button>
-            <h1>Création d'un Arbitre</h1>
+            <h1>Création d'un Joueur</h1>
             <form action="" method="POST" class="form">
                 <div class="input_container">
                     <div class="input_card">
                         <div class="name_player">
                             <h3>Nom</h3>
-                            <input name="arbitre_nom_crea" type="text">
+                            <input name="joueur_nom_crea" type="text">
                         </div>
                         <div class="name_player">
                             <h3>Prénom</h3>
-                            <input name="arbitre_prenom_crea" type="text">
+                            <input name="joueur_prenom_crea" type="text">
                         </div>
                         <div class="name_player">
-                            <label for="arbitre_nationalite_crea" >Nationalité</label>
-                                <select name="arbitre_nationalite_crea" id="select_team">
+                            <h3>Numéro de maillot</h3>
+                            <input name="joueur_num_crea" type="number">
+                        </div>
+                        <div class="name_player">
+                            <label for="joueur_natio_crea" >Nationalité</label>
+                                <select name="joueur_natio_crea" id="select_team">
                                     <option value="France">France</option>
-                                    <option value="France">France</option>
-                                    <option value="France">France</option>
-                                    <option value="France">France</option>
-                                    <option value="France">France</option>
+                                    <option value="France">Allemagne</option>
+                                    <option value="France">Americain</option>
+                                    <option value="France">Canadien</option>
+                                    <option value="France">Anglais</option>
                                 </select>
                         </div>
-                        <button name="arbitre_send_crea" type="submit" class=" save_player">Enregistré</button>
+                        <button name="joueur_crea" type="submit" class=" save_player">Enregistré</button>
                     </div>
                 </div>
             </form>
@@ -216,4 +179,7 @@ if (isset($_POST['arbitre_send_crea'])) {
 
 </hide>
 
+</html>
+
+</body>
 </html>

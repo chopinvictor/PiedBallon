@@ -105,7 +105,7 @@ if (isset($_POST['arbitre_send_crea'])) {
 
     <section class="parametre all_Participant">
         <div class="principal arbitre">
-            <h2>Arbitres</h2>
+            <h2>Ajouter un arbitres</h2>
             <?php
                 foreach($arbitre as $Value) : ;
                     $nom = $Value->nom;
@@ -116,10 +116,9 @@ if (isset($_POST['arbitre_send_crea'])) {
                     <div class="card_container">
                         <p class="card_number Division_number">1</p>
                         <p class="card_info Division_name"><?= $nom." ".$prenom ?> </p>
-                        <a href=<?php echo "../php/participant_arbitre_modif.php?id_arbitre=".$id_arbitre ?>><button class="button_svg_edit"><svg class="svg_icon_edit" ><use class="svg_nav_all" xlink:href="#svg_edit"/></svg></button></a>
+                        <a href=<?php echo "../php/participant_add_arbitre2.php?id_arbitre=".$id_arbitre ?>><button class="button_svg_edit" style="font-size: 1.5em;">+</button></a>
                     </div>                
             <?php endforeach ?>
-            <button class="button_principal" onclick="ActionPopup('popup_arbitre')" >Ajouter un arbitre</button>
         </div>
         <div class="add_player" id="popup_arbitre">
             <button class="btn_close" onclick="ActionPopup('popup_arbitre')"><svg class="svg_icon_edit" ><use class="svg_nav_all" xlink:href="#svg_close"/></svg></button>
