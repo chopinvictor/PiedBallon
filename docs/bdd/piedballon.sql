@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : lun. 23 oct. 2023 à 22:36
+-- Généré le : mar. 24 oct. 2023 à 02:50
 -- Version du serveur : 10.4.28-MariaDB
 -- Version de PHP : 8.2.4
 
@@ -556,6 +556,28 @@ INSERT INTO `postes` (`id_poste`, `poste`, `id_match`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `posts`
+--
+
+CREATE TABLE `posts` (
+  `id` int(11) NOT NULL,
+  `post_nom` varchar(50) NOT NULL,
+  `post_prenom` varchar(50) NOT NULL,
+  `post_age` int(3) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `posts`
+--
+
+INSERT INTO `posts` (`id`, `post_nom`, `post_prenom`, `post_age`) VALUES
+(1, 'jolie', 'angelina', 58),
+(2, 'quinto', 'zachary', 43),
+(3, 'gordon levitt', 'joseph', 37);
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `questions_securite`
 --
 
@@ -745,6 +767,12 @@ ALTER TABLE `postes`
   ADD KEY `id_match` (`id_match`);
 
 --
+-- Index pour la table `posts`
+--
+ALTER TABLE `posts`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Index pour la table `questions_securite`
 --
 ALTER TABLE `questions_securite`
@@ -834,6 +862,12 @@ ALTER TABLE `matchs`
 --
 ALTER TABLE `postes`
   MODIFY `id_poste` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+
+--
+-- AUTO_INCREMENT pour la table `posts`
+--
+ALTER TABLE `posts`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT pour la table `questions_securite`
