@@ -12,37 +12,57 @@ require_once('bdd.php');
 
 $id_equipe= $_SESSION['id_equipe'];
 
-$query = "SELECT m1.id_match, m1.date_match, m1.lieu_match, m1.score_equipe_1, m1.score_equipe_2, m1.est_fini,
-c2.lieu AS lieu_adversaire, e2.id_equipe AS id_adversaire
-FROM matchs AS m1
-INNER JOIN equipe_joue AS ej1 ON m1.id_match = ej1.id_match
-INNER JOIN equipes AS e1 ON ej1.id_equipe = e1.id_equipe
-INNER JOIN equipe_joue AS ej2 ON m1.id_match = ej2.id_match
-INNER JOIN equipes AS e2 ON ej2.id_equipe = e2.id_equipe
-INNER JOIN clubs AS c2 ON e2.id_club = c2.id_club
-WHERE e1.id_equipe = ?;";
+$query = "SELECT *
+FROM equipe_joue ej
+INNER JOIN equipes e ON ej.id_equipe = e.id_equipe
+INNER JOIN matchs AS m ON ej.id_match = m.id_match
+WHERE ej.id_equipe = ?";
 
 $getmatch = $db->prepare($query);
 $getmatch->execute([$_SESSION['id_equipe']]);
 
+$tab_all_equipe= array();
 $matchs= $getmatch->fetchAll(PDO::FETCH_OBJ);
+
+    foreach($matchs as $Value):
+        
+        $id_match = $Value->id_match;
+
+        $queryd = "SELECT e.nom_equipe AS nom_adversaire , e.id_equipe AS id_adversaire, m.est_fini
+        FROM equipe_joue AS ej
+        INNER JOIN equipes AS e ON ej.id_equipe = e.id_equipe
+        INNER JOIN matchs AS m ON ej.id_match = m.id_match
+        WHERE ej.id_match = ? AND  ej.id_equipe <> ? ;";
+
+        $getequipe = $db->prepare($queryd);
+        $getequipe->execute([$id_match, $id_equipe]);
+        $equipe= $getequipe->fetchAll(PDO::FETCH_OBJ);;
+
+        $tab_all_equipe[] = $equipe;
+
+    endforeach;
 
 $tab_finis = array();
 $tab_pas_finis = array();
+$count = 0;
 
 foreach ($matchs as $Value) {
     $Statut = $Value->est_fini;
 
     if ($Statut == 1) {
         $tab_finis[] = $Value; // Ajoutez $Value à $tab_finis
+        $tab_finis_vs[]= $tab_all_equipe[$count][0];
     } else {
         $tab_pas_finis[] = $Value; // Ajoutez $Value à $tab_pas_finis
+        $tab_pas_finis_vs[]= $tab_all_equipe[$count][0];
     }
-}
+    $count=$count+1;
+};
 
 
-var_dump($tab_finis);
-var_dump($tab_pas_finis);
+
+$count_html=0;
+$count_html_aps = 0;
 
 ?>
 
@@ -57,30 +77,45 @@ var_dump($tab_pas_finis);
 <body>
     <div class="historique">
         <h2>Historique des matchs</h2>
-        <?php foreach($joueur as $Value) : ;
-                $nom = $Value->nom;
-                $prenom = $Value->prenom;
-                $nationalite = $Value->nationalite_joueur;
-                $numero = $Value->numero;
-                $id_joueur = $Value->id_joueur;
-                ?>
-        
-       
-        
-                    <div class="card_container">
-                        <p class="card_number Division_number"><?= $numero ?></p>
-                        <p class="card_info Division_name"><?= $nom." ".$prenom ?> </p>
-                        <a href=<?php echo "../php/joueur_delete.php?id_joueur=".$id_joueur ?>><button class="button_svg_edit" style="font: 1.5em; color:red;" >X</button></a>
-                    </div>                
-            <?php endforeach ?>
-        <div>
+        <div class="container">
+        <?php
+                foreach($tab_finis as $Value) : 
+                    $nom_equipe = $Value->nom_equipe;
+                    $nom_adversaire = $tab_finis_vs[$count_html]->nom_adversaire;
+                    $id_adversaire = $tab_finis_vs[$count_html]->id_adversaire;
+                    $count_html=$count_html +1;
 
+
+                    ?>
+                    <a href= <?php echo "../php/general.php?id_equipe=".$id_equipe. "&id_adversaire=". $id_adversaire ?> ><div class="text">
+                        <p style="margin:5px ;"><?php echo " -  ".$nom_equipe." " ?></p>
+                        <p style="margin:5px ;">VS</p>
+                        <p style="margin:5px ;"><?php echo " -  ".$nom_adversaire ?></p>
+                    </div></a>
+
+            <?php endforeach ?>
         </div>
     </div>
     <div class="future">
         <h2>Match à venir</h2>
-        <div>
+        <div class="container">
+        <?php
+                foreach($tab_pas_finis as $Value) : 
+                    $nom_equipe = $Value->nom_equipe;
+                    $nom_adversaire = $tab_pas_finis_vs[$count_html_aps]->nom_adversaire;
+                    $id_adversaire = $tab_finis_vs[$count_html_aps]->id_adversaire;
+                    $count_html=$count_html_aps +1;
 
+                    
+                    ?>
+                    <a href= <?php echo "../php/general.php?id_equipe=".$id_equipe. "&id_adversaire=". $id_adversaire ?> ><div class="text">
+                        <p style="margin:5px ;"><?php echo "-  ".$nom_equipe." " ?></p>
+                        <p style="margin:5px ;"> VS </p>
+                        <p style="margin:5px ;"><?php echo "-  ".$nom_adversaire ?></p>
+                    </div></a>
+
+
+            <?php endforeach ?>
         </div>
     </div>
 </body>
