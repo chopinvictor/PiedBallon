@@ -10,3 +10,4 @@ $db = new PDO($dsn, $username, $password, [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXC
 require_once('Equipes.php');
 require_once('Matchfoot.php');
 require_once('Joueurs.php');
+require_once('Evenements.php');
