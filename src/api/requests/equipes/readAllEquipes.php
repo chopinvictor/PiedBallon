@@ -4,7 +4,7 @@
 header('Access-Control-Allow-Origin: *');
 header('Content-Type: application/json');
 // initialisation de l'API
-include_once('../core/initialize.php');
+include_once('../../core/initialize.php');
 
 $equipe = new Equipes($db);
 
@@ -37,5 +37,5 @@ if ($num > 0) {
 	echo json_encode($equipe_arr);
 
 } else {
-	echo json_encode(['message' => 'aucun equipe trouvé']);
+	echo json_encode(['message' => 'aucun equipe trouvée']);
 }

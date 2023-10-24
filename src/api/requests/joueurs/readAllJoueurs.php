@@ -4,7 +4,7 @@
 header('Access-Control-Allow-Origin: *');
 header('Content-Type: application/json');
 // initialisation de l'API
-include_once('../core/initialize.php');
+include_once('../../core/initialize.php');
 
 $match = new Joueurs($db);
 
