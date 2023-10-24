@@ -30,7 +30,6 @@ $arbitre_match= $getmatch->fetchAll(PDO::FETCH_OBJ);
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/participant.css">
@@ -86,12 +85,10 @@ $arbitre_match= $getmatch->fetchAll(PDO::FETCH_OBJ);
             </li>
         </ul>
     </div>
-
 </nav>
 
 
 <body>
-
     <section class="parametre all_Participant">
         <div class="principal arbitre">
             <h2>Arbitres</h2>
@@ -195,7 +192,7 @@ $arbitre_match= $getmatch->fetchAll(PDO::FETCH_OBJ);
                         <h3>Numéro de Maillot</h3>
                         <input type="text">
                     </div>
-                
+
                     <button class="save_player">Enregistré</button>
                 </div>
             </div>
@@ -228,7 +225,7 @@ $arbitre_match= $getmatch->fetchAll(PDO::FETCH_OBJ);
                         <h3>Numéro de Maillot</h3>
                         <input type="text">
                     </div>
-                
+
                     <button class="save_player">Enregistré</button>
                 </div>
                 </div>
@@ -236,7 +233,6 @@ $arbitre_match= $getmatch->fetchAll(PDO::FETCH_OBJ);
         </div>
 
     </section>
-
 </body>
 
 
