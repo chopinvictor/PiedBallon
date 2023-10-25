@@ -59,6 +59,4 @@ header("Location: ../php/match.php")
 
 
 ?>
-
-
 </html>

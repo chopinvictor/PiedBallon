@@ -455,3 +455,44 @@ nav {
     align-items: center;
     justify-content: center;
 }
+
+/* ********************* resposive */
+
+@media (max-width: 36em) {
+    
+    .card_container {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        background-color: #ffffff;
+        width: 300px;
+        margin: 5px 0px;
+        border-radius: 5px;
+        box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .button_svg_edit {
+        position: relative;
+        right: 30px;
+        background-color: #6a994e00;
+        height: 42px;
+        width: 42px;
+        align-items: center;
+        border-radius: 21px;
+        cursor: pointer;
+    }
+
+    .card_info{
+        width:200px;
+    }
+    
+    .principal{
+        width: 300px;
+
+    }
+
+    .button_principal{
+        width: 300px;
+    }
+    
+}

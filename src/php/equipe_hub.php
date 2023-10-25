@@ -45,7 +45,7 @@ $_SESSION['id_equipe']=$_GET['id_equipe'];
                     </div>
                 </div>
             </div>
-            <div class="card">
+            <!-- <div class="card">
                 <div class="card_img">
                     <img src="../MEDIA/equipe.jpg" alt="">
                 </div>
@@ -55,7 +55,7 @@ $_SESSION['id_equipe']=$_GET['id_equipe'];
                         <a href="../"><input type="submit" class="boutton_plus" value="Modifier equipe" /></a>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
     </section>
 </body>

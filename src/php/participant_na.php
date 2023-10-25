@@ -100,10 +100,12 @@ $equipe_adversaire = $getmatch->fetchAll(PDO::FETCH_OBJ);
                 </a>
             </li>
             <li>
-                <div class="current nav_box">
-                    <svg class="svg_icon" ><use class="svg_nav_all" xlink:href="#svg_participant"/></svg>
-                    <p>Participant</p>
-                </div>
+                <a href="../php/participant.php">
+                    <div class="current nav_box">
+                        <svg class="svg_icon" ><use class="svg_nav_all" xlink:href="#svg_participant"/></svg>
+                        <p>Participant</p>
+                    </div>
+                <a href="../php/general_na.php">
             </li>
             <!-- <li>
                 <div class="nav_box">

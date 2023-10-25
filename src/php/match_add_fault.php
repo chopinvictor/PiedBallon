@@ -23,11 +23,6 @@ $getmatch->execute([$id_equipe]);
 
 $arbitre= $getmatch->fetchAll(PDO::FETCH_OBJ);
 
-
-
-
-
-
 if(empty($_SESSION)){
     header("Location: ../php/login.php");
 }
