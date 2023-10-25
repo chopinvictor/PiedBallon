@@ -47,15 +47,22 @@ form * {
     align-items: center;
 }
 
+form > button {
+    display: block;
+    width: 100%;
+    color: #ffffff;
+}
+
 button {
     display: inline-block;
     background: var(--primary);
     border: 1px solid var(--primary);
-    font-size: 1rem;
+    font-size: 1em;
+    font-weight: 400;
     text-align: center;
     padding: 0.5em 0.75em;
+    min-width: 10ch;
     text-decoration: none;
-    align-self: center;
 }
 
 input {
