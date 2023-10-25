@@ -52,7 +52,8 @@ class Matchfoot
 		SUBSTRING_INDEX(GROUP_CONCAT(clubs.lieu ORDER BY eq.id_equipe DESC), ",", 1) AS nom_club_2
 				FROM matchs
 				INNER JOIN equipe_joue AS eq ON matchs.id_match = eq.id_match
-				INNER JOIN clubs ON eq.id_equipe = clubs.id_club
+          		INNER JOIN equipes as e on e.id_equipe = eq.id_equipe
+				INNER JOIN clubs ON e.id_club = clubs.id_club
 				GROUP BY matchs.id_match';
 		$stmt = $this->conn->prepare($query);
 		$stmt->execute();
@@ -67,8 +68,9 @@ class Matchfoot
         SUBSTRING_INDEX(GROUP_CONCAT(clubs.lieu ORDER BY eq.id_equipe DESC), ",", 1) AS nom_club_2
                 FROM matchs
                 INNER JOIN equipe_joue AS eq ON matchs.id_match = eq.id_match
-                INNER JOIN clubs ON eq.id_equipe = clubs.id_club
-                WHERE matchs.id_match = ?      
+                INNER JOIN equipes on equipes.id_equipe = eq.id_equipe
+                INNER JOIN clubs ON equipes.id_club = clubs.id_club
+                WHERE matchs.id_match = ?
                 GROUP BY matchs.id_match';
 		$stmt = $this->conn->prepare($query);
 		$stmt->execute([$id]);
@@ -89,11 +91,13 @@ class Matchfoot
 		$stmtRem = $this->conn->prepare($queryRemplacements);
 		$stmtRem->execute([$id]);
 
-		$queryButs = 'SELECT evenements.*, joueurs.nom
+		$queryButs = 'SELECT evenements.*, joueurs.nom, clubs.lieu as nom_equipe
 						FROM evenements
 						INNER JOIN buts ON buts.id_evenement = evenements.id_evenement
 						INNER JOIN joueurs ON joueurs.id_joueur = buts.id_joueur
-						WHERE id_match=?';
+                        INNER JOIN equipes on equipes.id_equipe = joueurs.id_equipe
+                        INNER JOIN clubs on clubs.id_club = equipes.id_club
+						WHERE evenements.id_match=?';
 		$stmtButs = $this->conn->prepare($queryButs);
 		$stmtButs->execute([$id]);
 
