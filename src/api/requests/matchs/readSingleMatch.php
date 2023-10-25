@@ -10,8 +10,8 @@ include_once('../../core/initialize.php');
 // instanciation de Match
 $match = new Matchfoot($db);
 
-$match->id_match = $_GET['id'];
-$match->readSingleMatch();
+$id_match = $_GET['id'];
+$match->readSingleMatch($id_match);
 
 if (isset($match->id_match)) {
 	$match_arr = [
@@ -20,7 +20,13 @@ if (isset($match->id_match)) {
 		'lieu_match' => $match->lieu_match,
 		'score_equipe_1' => $match->score_equipe_1,
 		'score_equipe_2' => $match->score_equipe_2,
-		'est_fini' => $match->est_fini
+		'est_fini' => $match->est_fini,
+		'nom_club_1' => $match->nom_club_1,
+		'nom_club_2' => $match->nom_club_2,
+		'arbitres' => $match->arbitres,
+		'remplacements' => $match->remplacements,
+		'buts' => $match->buts,
+		'fautes' => $match->fautes
 	];
 
 	// construction du JSON
