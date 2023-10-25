@@ -2,7 +2,7 @@
 <?php 
 session_start();
 
-if(empty($_SESSION) || ($_SESSION['admin']!==1)){
+if(empty($_SESSION) || ($_SESSION['admin']!==2)){
     header("Location: ../php/login.php");
 }
 
@@ -55,7 +55,6 @@ $club= $getmatch->fetchAll(PDO::FETCH_OBJ);
 <body>
 
     <section class="parametre all_Participant">
-        <button class="button_svg_edit" onclick="ActionPopup('popup_arbitre')" style="font-size: 2em; font-weight:300; top:20px; right:20px;position:absolute;">+</button>
         <div class="principal arbitre">
             <h2><?= "Equipes du club ".$lieu_club ?></h2>
             <?php
@@ -65,46 +64,11 @@ $club= $getmatch->fetchAll(PDO::FETCH_OBJ);
                     $id_equipe = $Value->id_equipe;
                     ?>
                    <div class="card_container">
-                    <a href=<?php echo "../php/equipe_hub.php?id_equipe=".$id_equipe ?>><p class="card_number Division_number"><?= $nombre_match ?></p></a>
-                        <a href=<?php echo "../php/equipe_hub.php?id_equipe=".$id_equipe ?>><p class="card_info Division_name"><?= $nom_equipe ?> </p></a>
-                        <a href=<?php echo "../php/equipe_delete.php?id_equipe=".$id_equipe ?>><button class="button_svg_edit" style="color:red;">X</button></a>
+                    <a href=<?php echo "../php/equipe_hub_na.php?id_equipe=".$id_equipe ?>><p class="card_number Division_number"><?= $nombre_match ?></p></a>
+                        <a href=<?php echo "../php/equipe_hub_na.php?id_equipe=".$id_equipe ?>><p class="card_info Division_name"><?= $nom_equipe ?> </p></a>
                     </div>                
             <?php endforeach ?>
         </div>
-        <div class="add_player" id="popup_arbitre">
-            <button class="btn_close" onclick="ActionPopup('popup_arbitre')"><svg class="svg_icon_edit" ><use class="svg_nav_all" xlink:href="#svg_close"/></svg></button>
-            <h1>Création d'une équipe</h1>
-            <form action="" method="POST" class="form">
-                <div class="input_container">
-                    <div class="input_card">
-                        <div class="name_player">
-                            <h3>Nom d'équipe</h3>
-                            <input name="equipe_nom" type="text">
-                        </div>
-                        <div class="name_player">
-                            <h3>prenom entraineur</h3>
-                            <input name="equipe_prenom_entraineur" type="text">
-                        </div>
-                        <div class="name_player">
-                            <h3>nom entraineur</h3>
-                            <input name="equipe_nom_entraineur" type="text">
-                        </div>
-                        <div class="name_player">
-                            <h3>nom entraineur</h3>
-                            <input name="equipe_nom_entraineur_adjoint" type="text">
-                        </div>
-                        <div class="name_player">
-                            <h3>Prenom entraineur adjoint</h3>
-                            <input name="equipe_prenom_entraineur_adjoint" type="text">
-                        </div>
-                        
-                        <button name="equipe_crea" type="submit" class="save_player">Enregistré</button>
-                    </div>
-                </div>
-            </form>
-        </div>
-
-
     </section>
 
 </body>

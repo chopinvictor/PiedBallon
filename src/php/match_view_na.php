@@ -3,9 +3,10 @@
 session_start();
 
 
-if(empty($_SESSION) || ($_SESSION['admin']!==1)){
+if(empty($_SESSION) || ($_SESSION['admin']!==2)){
     header("Location: ../php/login.php");
 }
+
 
 
 
@@ -89,7 +90,7 @@ $count_html_aps = 0;
 
 
                     ?>
-                    <a href= <?php echo "../php/general.php?id_equipe=".$id_equipe. "&id_adversaire=". $id_adversaire."&id_match=".$id_match ?> ><div class="text">
+                    <a href= <?php echo "../php/general_na.php?id_equipe=".$id_equipe. "&id_adversaire=". $id_adversaire."&id_match=".$id_match ?> ><div class="text">
                         <p style="margin:5px ;"><?php echo " -  ".$nom_equipe." " ?></p>
                         <p style="margin:5px ;">VS</p>
                         <p style="margin:5px ;"><?php echo " -  ".$nom_adversaire ?></p>
@@ -111,7 +112,7 @@ $count_html_aps = 0;
 
                     
                     ?>
-                    <a href= <?php echo "../php/general.php?id_equipe=".$id_equipe. "&id_adversaire=". $id_adversaire."&id_match=".$id_match ?> ><div class="text">
+                    <a href= <?php echo "../php/general_na.php?id_equipe=".$id_equipe. "&id_adversaire=". $id_adversaire."&id_match=".$id_match ?> ><div class="text">
                         <p style="margin:5px ;"><?php echo "-  ".$nom_equipe." " ?></p>
                         <p style="margin:5px ;"> VS </p>
                         <p style="margin:5px ;"><?php echo "-  ".$nom_adversaire ?></p>

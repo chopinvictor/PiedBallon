@@ -1,11 +1,5 @@
 1-match id need: 
 
-        -participant_add_arbitre2.php
-        -participant
-        -participant_delete_arbitre.php
-
-
-
 
 
 dans arbitre match regler le problem de est_principal ? 
@@ -14,8 +8,11 @@ dans arbitre match regler le problem de est_principal ?
 
 
 V  reste a faire ajouter des joueur dans une equipe 
-X  la partie participant 
-X  et la feuille de match  
-X  la partie admin ???? 
-X  modifier une equipe
-X  Voir tous les match a venir et historique
+V  la partie participant 
+V  feuille de match but
+X  feuille de match fautes
+X  feuille de match remplacements. 
+V  la partie admin ???? 
+V  modifier une equipe
+V  Voir tous les match a venir et historique 
+X  Responsive

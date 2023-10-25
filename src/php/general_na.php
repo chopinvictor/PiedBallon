@@ -7,7 +7,7 @@ session_start();
 
 
 
-if(empty($_SESSION) || ($_SESSION['admin']!==1)){
+if(empty($_SESSION) || ($_SESSION['admin']!==2)){
     header("Location: ../php/login.php");
 }
 
@@ -46,14 +46,6 @@ $date_match = $currentmatch[0]->date_match;
 
 
 
-if (isset($_POST['send'])) {
-
-    if( !($_POST['match_lieu']=="") && !($_POST['match_date'])=="" ){header("Location: ../php/general_modified.php?id_match=".$id_match."&match_lieu=".$_POST['match_lieu']."&match_date=".$_POST['match_date']);}
-    if(!($_POST['match_date']=="")){ header("Location: ../php/general_modified.php?id_match=".$id_match."&match_date=".$_POST['match_date']."&match_lieu=".$lieu_match); } 
-    if(!($_POST['match_lieu']=="")){header("Location: ../php/general_modified.php?id_match=".$id_match."&match_lieu=".$_POST['match_lieu']."&match_date=".$date_match); } 
-}
-
-
 ?>
 
 <!DOCTYPE html>
@@ -72,7 +64,7 @@ if (isset($_POST['send'])) {
     <div class="navigation">
         <ul class="ul_nav">
             <li>
-                <a href="../php/club.php">
+                <a href="../php/club_na.php">
                     <div class="nav_box">
                         <svg class="svg_icon" ><use class="svg_nav_all" xlink:href="#svg_home"/></svg>
                         <p>Home</p>
@@ -80,7 +72,7 @@ if (isset($_POST['send'])) {
                 </a>
             </li>
             <li>
-                <a href="../php/general.php">
+                <a href="../php/general_na.php">
                     <div class=" current nav_box">
                         <svg class="svg_icon" ><use class="svg_nav_all" xlink:href="#svg_setting"/></svg>
                         <p>Général</p>
@@ -88,7 +80,7 @@ if (isset($_POST['send'])) {
                 </a>
             </li>
             <li>
-                <a href="../php/participant.php">
+                <a href="../php/participant_na.php">
                     <div class="nav_box">
                         <svg class="svg_icon" ><use class="svg_nav_all" xlink:href="#svg_participant"/></svg>
                         <p>Participant</p>
@@ -108,7 +100,7 @@ if (isset($_POST['send'])) {
                 </div>
             </li> -->
             <li>
-                <a href="../php/match.php">
+                <a href="../php/match_na.php">
                     <div class="nav_box">
                         <svg class="svg_icon" ><use class="svg_nav_all" xlink:href="#svg_score"/></svg>
                         <p>Match</p>
@@ -134,12 +126,8 @@ if (isset($_POST['send'])) {
                     <div class="card_container">
                         <p class="card_number match_number">1</p>
                         <p id="first_team_mode_view" class="card_info match_date"><?php echo $date_match  ?></p>
-                        <input name="match_date" id="first_team_mode_edit" type="date">
-                        <buton class="button_svg_edit" onclick="change_to_mode_edit('first_team_mode_edit','first_team_mode_view','first_team_button')"><svg class="svg_icon_edit" ><use class="svg_nav_all" xlink:href="#svg_edit"/></svg></buton>
                     </div>   
                 </div>
-
-                    <button name="send" type="submit" id="first_team_button"  class="button_principal">Enregistré cette modification</button>
 
                 </div>
                 <div class="principal Match_location">
@@ -149,9 +137,7 @@ if (isset($_POST['send'])) {
                         <p class="card_number location_number">1</p>
                         <input name="match_lieu" id="second_team_mode_edit" type="text">
                         <p id="second_team_mode_view" class="card_info location_name"><?php echo $lieu_match  ?></p>
-                        <buton class="button_svg_edit" onclick="change_to_mode_edit('second_team_mode_edit','second_team_mode_view','second_team_button')"><svg class="svg_icon_edit" ><use class="svg_nav_all" xlink:href="#svg_edit"/></svg></buton>
                     </div>
-                    <button name="send" type="submit" id="second_team_button" class="button_principal">Enregistré cette modification</button>
                 </form>
             </div>
         

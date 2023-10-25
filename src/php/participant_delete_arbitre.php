@@ -2,7 +2,8 @@
 
 session_start();
 
-if(empty($_SESSION)){
+
+if(empty($_SESSION) || ($_SESSION['admin']!==1)){
     header("Location: ../php/login.php");
 }
 
@@ -10,7 +11,7 @@ if(empty($_SESSION)){
 
 require_once('bdd.php');
 
-$id_match = 2;
+$id_match = $_SESSION['id_match'];
 $id_arbitre = $_GET['id_arbitre'];
 
 

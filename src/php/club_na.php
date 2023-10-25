@@ -2,7 +2,7 @@
 <?php
 session_start();
 
-if(empty($_SESSION) || ($_SESSION['admin']!==1)){
+if(empty($_SESSION) || ($_SESSION['admin']!==2)){
     header("Location: ../php/login.php");
 }
 
@@ -36,7 +36,7 @@ $club= $getmatch->fetchAll(PDO::FETCH_OBJ);
                 <div class="principal arbitre">
                     <div class="card_container">
                         <p class="card_info Division_name"><?= $lieu ?> </p>
-                        <a href=<?php echo"../php/club_set_id.php?id_club=".$id_club."&lieu_club=".$lieu   ?> class="link" ><p>voir les équipes du club</p></a>
+                        <a href=<?php echo"../php/club_set_id_na.php?id_club=".$id_club."&lieu_club=".$lieu   ?> class="link" ><p>voir les équipes du club</p></a>
                     </div>
                 </div>
                            

@@ -2,10 +2,10 @@
 
 session_start();
 
-if(empty($_SESSION)){
-    header("Location: ../php/login.php?groscon");
-}
 
+if(empty($_SESSION) || ($_SESSION['admin']!==1)){
+    header("Location: ../php/login.php");
+}
 
 require_once('bdd.php');
 

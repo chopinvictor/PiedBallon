@@ -19,14 +19,23 @@ if (isset($_POST['send'])) {
         if (!empty($user)) {
             
 
-            if (password_verify($_POST['mdp'], $user-> mot_de_passe )) {
-                
+            if (password_verify($_POST['mdp'], $user-> mot_de_passe ) && $user->est_admin==1 ) {
+            
                 session_start();
                 $_SESSION['email'] = $_POST['email'];
                 $_SESSION['id'] = $user->id_utilisateur;
-                echo "<p>ttest</p>";
-                header("Location: ../php/general.php");
+                $_SESSION['admin'] = 1;
+                header("Location: ../php/club.php");
                 exit();
+            }elseif(password_verify($_POST['mdp'], $user-> mot_de_passe) && $user->est_admin==2 ){
+                session_start();
+                $_SESSION['email'] = $_POST['email'];
+                $_SESSION['id'] = $user->id_utilisateur;
+                $_SESSION['admin'] = 2;
+                header("Location: ../php/club_na.php");
+                exit();
+            }{
+                echo "<p style='color:red;'> Vous n'êtes pas autoriser à rentrer sur le site ou<p>";
             }
         }
         echo "<p style='color:red;'> Votre mots de passe ou votre identifiant est incorrect <p>";

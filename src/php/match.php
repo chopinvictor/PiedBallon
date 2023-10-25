@@ -2,10 +2,69 @@
 
 session_start();
 
-if(empty($_SESSION)){
+if(empty($_SESSION) || ($_SESSION['admin']!==1)){
     header("Location: ../php/login.php");
 }
 
+
+
+require_once('bdd.php');
+
+$id_equipe =$_SESSION['id_equipe'];
+$id_adversaire = $_SESSION['id_adversaire'];
+$id_match = $_SESSION['id_match'];
+
+
+$query = "SELECT * 
+FROM matchs
+WHERE id_match=?";
+$getmatch = $db->prepare($query);
+$getmatch->execute([$id_match]);
+
+$match= $getmatch->fetchAll(PDO::FETCH_OBJ);
+
+$query = "SELECT * 
+FROM equipes
+WHERE id_equipe=?";
+$getmatch = $db->prepare($query);
+$getmatch->execute([$id_equipe]);
+
+$equipe_une= $getmatch->fetchAll(PDO::FETCH_OBJ);
+
+$query = "SELECT * 
+FROM equipes
+WHERE id_equipe=?";
+$getmatch = $db->prepare($query);
+$getmatch->execute([$id_adversaire]);
+
+$equipe_deux= $getmatch->fetchAll(PDO::FETCH_OBJ);
+
+$query_team = "SELECT *
+FROM matchs
+WHERE id_match =?;";
+
+$getmatch = $db->prepare($query_team);
+$getmatch->execute([$id_match]);
+
+$match = $getmatch->fetchAll(PDO::FETCH_OBJ);
+
+if($id_equipe<$id_adversaire){
+	$nom_equipe_une = $equipe_une[0]->nom_equipe ;
+	$nom_equipe_deux = $equipe_deux[0]->nom_equipe ;
+	$id_equipe_une = $equipe_une[0]->id_equipe;
+	$id_equipe_deux = $equipe_deux[0]->id_equipe;
+	$score_une= $match[0]->score_equipe_1;	
+	$score_deux= $match[0]->score_equipe_2;	
+
+}else{
+	$nom_equipe_une = $equipe_deux[0]->nom_equipe ;
+	$nom_equipe_deux = $equipe_une[0]->nom_equipe ;
+	$id_equipe_une =  $equipe_deux[0]->id_equipe;	
+	$id_equipe_deux =$equipe_une[0]->id_equipe;
+	$score_deux= $match[0]->score_equipe_1;	
+	$score_une= $match[0]->score_equipe_2;	
+
+};
 
 ?>
 <!DOCTYPE html>
@@ -74,23 +133,23 @@ if(empty($_SESSION)){
 	<section class="sec_main">
 		<div class="affichage_score">
 			<div class="equipe">
-				<h2 class="nom_equipe_1">France</h2>
-				<p class="Value_Score">100</p>
+				<h2 class="nom_equipe_1"><?php echo $nom_equipe_une ?></h2>
+				<p class="Value_Score"><?php echo $score_une ?></p>
 			</div>
 			<div class="terrain">
 				<img class="img_terrain" src="../media/football.jpg" alt="terrain de football">
 			</div>
 			<div class="equipe">
-				<h2 class="nom_equipe_2">Espagne</h2>
-				<p class="Value_Score">0</p>
+				<h2 class="nom_equipe_2"><?php echo $nom_equipe_deux ?></h2>
+				<p class="Value_Score"><?php echo $score_deux ?></p>
 			</div>
 		</div>
 		<div class="match_action">
 			<div class="match_action_1">
 				<div class="action_but_equipe">
-					<button class="btn_but">-</button>
-					<p class="action_equipe">Espagne</p>
-					<button class="btn_but">+</button>
+					<a href=<?php echo "match_delete_goal.php?id_equipe_une=".$id_equipe_deux."&id_equipe_deux=".$id_equipe_une ?>><button class="btn_but">-</button></a>
+					<p class="action_equipe"><?php echo $nom_equipe_une ?></p>
+					<a href=<?php echo "match_add_goal.php?id_equipe_une=".$id_equipe_deux."&id_equipe_deux=".$id_equipe_une ?>><button class="btn_but">+</button></a>
 				</div>
 				<div class="action_remplacement">
 					<div class="action_remplacement_equipe">
@@ -114,9 +173,9 @@ if(empty($_SESSION)){
 
 			<div class="match_action_1">
 				<div class="action_but_equipe">
-					<button class="btn_but">-</button>
-					<p class="action_equipe">France</p>
-					<button class="btn_but">+</button>
+				<a href=<?php echo "match_delete_goal.php?id_equipe_une=".$id_equipe_une."&id_equipe_deux=".$id_equipe_deux ?>><button class="btn_but">-</button></a>
+					<p class="action_equipe"><?php echo $nom_equipe_deux ?></p>
+					<a href=<?php echo "match_add_goal.php?id_equipe_une=".$id_equipe_une."&id_equipe_deux=".$id_equipe_deux ?>><button class="btn_but">+</button></a>
 				</div>
 				<div class="action_remplacement">
 					<div class="action_remplacement_equipe">

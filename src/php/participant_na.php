@@ -6,8 +6,7 @@ session_start();
 
 
 
-
-if(empty($_SESSION) || ($_SESSION['admin']!==1)){
+if(empty($_SESSION) || ($_SESSION['admin']!==2)){
     header("Location: ../php/login.php");
 }
 
@@ -84,7 +83,7 @@ $equipe_adversaire = $getmatch->fetchAll(PDO::FETCH_OBJ);
     <div class="navigation">
         <ul class="ul_nav">
             <li>
-                <a href="../php/club.php">
+                <a href="../php/club_na.php">
                     <div class="nav_box">
                         <svg class="svg_icon" ><use class="svg_nav_all" xlink:href="#svg_home"/></svg>
                         <p>Home</p>
@@ -92,7 +91,7 @@ $equipe_adversaire = $getmatch->fetchAll(PDO::FETCH_OBJ);
                 </a>
             </li>
             <li>
-                <a href="../php/general.php">
+                <a href="../php/general_na.php">
                     <div class="nav_box">
                         <svg class="svg_icon" ><use class="svg_nav_all" xlink:href="#svg_setting"/></svg>
                         <p>Général</p>
@@ -119,7 +118,7 @@ $equipe_adversaire = $getmatch->fetchAll(PDO::FETCH_OBJ);
                 </div>
             </li> -->
             <li>
-                <a href="../php/match.php">
+                <a href="../php/match_na.php">
                     <div class="nav_box">
                         <svg class="svg_icon" ><use class="svg_nav_all" xlink:href="#svg_score"/></svg>
                         <p>Match</p>
@@ -144,10 +143,8 @@ $equipe_adversaire = $getmatch->fetchAll(PDO::FETCH_OBJ);
                 <div class="card_container">
                     <p class="card_number Division_number">1</p>
                     <p class="card_info Division_name"><?= $nom." ".$prenom ?></p>
-                    <a href=<?php echo "../php/participant_delete_arbitre.php?id_arbitre=".$id ?>><button class="button_svg_edit" style="color:red;">X</button></a>
                 </div>              
             <?php endforeach ?>
-            <a href="../php/participant_add_arbitre.php"><button class="button_principal">Ajouter un arbitre</button></a>
         </div>
         <div class="principal equipe_1">
             <h2>Equipe 1</h2>

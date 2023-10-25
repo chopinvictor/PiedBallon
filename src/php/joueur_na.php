@@ -6,7 +6,10 @@ session_start();
 
 
 
-if(empty($_SESSION) || ($_SESSION['admin']!==1)){
+
+
+
+if(empty($_SESSION) || ($_SESSION['admin']!==2)){
     header("Location: ../php/login.php");
 }
 
@@ -73,43 +76,8 @@ $joueur= $getmatch->fetchAll(PDO::FETCH_OBJ);
                     <div class="card_container">
                         <p class="card_number Division_number"><?= $numero ?></p>
                         <p class="card_info Division_name"><?= $nom." ".$prenom ?> </p>
-                        <a href=<?php echo "../php/joueur_delete.php?id_joueur=".$id_joueur ?>><button class="button_svg_edit" style="font: 1.5em; color:red;" >X</button></a>
                     </div>                
             <?php endforeach ?>
-            <button class="button_principal" onclick="ActionPopup('popup_arbitre')" >Ajouter un joueur</button>
-        </div>
-        <div class="add_player" id="popup_arbitre">
-            <button class="btn_close" onclick="ActionPopup('popup_arbitre')"><svg class="svg_icon_edit" ><use class="svg_nav_all" xlink:href="#svg_close"/></svg></button>
-            <h1>Création d'un Joueur</h1>
-            <form action="" method="POST" class="form">
-                <div class="input_container">
-                    <div class="input_card">
-                        <div class="name_player">
-                            <h3>Nom</h3>
-                            <input name="joueur_nom_crea" type="text">
-                        </div>
-                        <div class="name_player">
-                            <h3>Prénom</h3>
-                            <input name="joueur_prenom_crea" type="text">
-                        </div>
-                        <div class="name_player">
-                            <h3>Numéro de maillot</h3>
-                            <input name="joueur_num_crea" type="number">
-                        </div>
-                        <div class="name_player">
-                            <label for="joueur_natio_crea" >Nationalité</label>
-                                <select name="joueur_natio_crea" id="select_team">
-                                    <option value="France">France</option>
-                                    <option value="France">Allemagne</option>
-                                    <option value="France">Americain</option>
-                                    <option value="France">Canadien</option>
-                                    <option value="France">Anglais</option>
-                                </select>
-                        </div>
-                        <button name="joueur_crea" type="submit" class=" save_player">Enregistré</button>
-                    </div>
-                </div>
-            </form>
         </div>
 
 

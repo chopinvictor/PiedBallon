@@ -4,18 +4,22 @@
 
 session_start();
 
+
 if(empty($_SESSION) || ($_SESSION['admin']!==1)){
     header("Location: ../php/login.php");
 }
 
-$id_arbitre=3;
+
+
+
+$id_equipe= $_SESSION['id_equipe'];
 
 
 require_once('bdd.php');
 
-$query = "SELECT * FROM arbitres";
+$query = "SELECT * FROM equipes WHERE id_equipe=?";
 $getmatch = $db->prepare($query);
-$getmatch->execute();
+$getmatch->execute([$id_equipe]);
 
 $arbitre= $getmatch->fetchAll(PDO::FETCH_OBJ);
 
@@ -57,59 +61,11 @@ if (isset($_POST['arbitre_send_crea'])) {
     <script src="../js/popup.js"></script>
     <script src="../js/edit.js" ></script>
 </head>
-<nav>
-    <div class="navigation">
-        <ul class="ul_nav">
-            <li>
-                <div class="nav_box">
-                    <svg class="svg_icon" ><use class="svg_nav_all" xlink:href="#svg_presentation"/></svg>
-                    <p>Presentation</p>
-                </div>
-            </li>
-            <li>
-                <a href="../php/general.php">
-                    <div class="nav_box">
-                        <svg class="svg_icon" ><use class="svg_nav_all" xlink:href="#svg_setting"/></svg>
-                        <p>Général</p>
-
-                    </div>
-                </a>
-            </li>
-            <li>
-                <div class="current nav_box">
-                    <svg class="svg_icon" ><use class="svg_nav_all" xlink:href="#svg_participant"/></svg>
-                    <p>Participant</p>
-                </div>
-            </li>
-            <!-- <li>
-                <div class="nav_box">
-                    <svg class="svg_icon" ><use class="svg_nav_all" xlink:href="#svg_classement"/></svg>
-                    <p>Classement</p>
-                </div>
-            </li>
-            <li>
-                <div class="nav_box">
-                    <svg class="svg_icon" ><use class="svg_nav_all" xlink:href="#svg_calendrier"/></svg>
-                    <p>Calendrier</p>
-                </div>
-            </li> -->
-            <li>
-                <a href="../php/match.php">
-                    <div class="nav_box">
-                        <svg class="svg_icon" ><use class="svg_nav_all" xlink:href="#svg_score"/></svg>
-                        <p>Match</p>
-                    </div>
-                </a>
-            </li>
-        </ul>
-    </div>
-
-</nav>
 <body>
 
     <section class="parametre all_Participant">
         <div class="principal arbitre">
-            <h2>Arbitres</h2>
+            <h2>Choisir le joueur</h2>
             <?php
                 foreach($arbitre as $Value) : ;
                     $nom = $Value->nom;
@@ -120,10 +76,9 @@ if (isset($_POST['arbitre_send_crea'])) {
                     <div class="card_container">
                         <p class="card_number Division_number">1</p>
                         <p class="card_info Division_name"><?= $nom." ".$prenom ?> </p>
-                        <a href=<?php echo "../php/participant_arbitre_modif.php?id_arbitre=".$id_arbitre ?>><button class="button_svg_edit"><svg class="svg_icon_edit" ><use class="svg_nav_all" xlink:href="#svg_edit"/></svg></button></a>
+                        <a href=<?php echo "../php/participant_add_arbitre2.php?id_arbitre=".$id_arbitre ?>><button class="button_svg_edit" style="font-size: 1.5em;">+</button></a>
                     </div>                
             <?php endforeach ?>
-            <button class="button_principal" onclick="ActionPopup('popup_arbitre')" >Ajouter un arbitre</button>
         </div>
         <div class="add_player" id="popup_arbitre">
             <button class="btn_close" onclick="ActionPopup('popup_arbitre')"><svg class="svg_icon_edit" ><use class="svg_nav_all" xlink:href="#svg_close"/></svg></button>

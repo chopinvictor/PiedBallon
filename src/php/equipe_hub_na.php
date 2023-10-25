@@ -2,7 +2,7 @@
 
 session_start();
 
-if(empty($_SESSION) || ($_SESSION['admin']!==1)){
+if(empty($_SESSION) || ($_SESSION['admin']!==2)){
     header("Location: ../php/login.php");
 }
 
@@ -29,7 +29,7 @@ $_SESSION['id_equipe']=$_GET['id_equipe'];
                 <div class="card_info">
                     <h3>Joueur</h3>
                     <div id="boutton plus">
-                        <a href="../php/joueur.php"><input type="submit" class="boutton_plus" value="Ajouter joueur" /></a>
+                        <a href="../php/joueur_na.php"><input type="submit" class="boutton_plus" value="Voir joueur" /></a>
                     </div>
                 </div>
             </div>
@@ -41,18 +41,7 @@ $_SESSION['id_equipe']=$_GET['id_equipe'];
                 <div class="card_info">
                     <h3>Match</h3>
                     <div id="boutton plus">
-                        <a href="../php/match_view.php"><input type="submit" class="boutton_plus" value="Match" /></a>
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card_img">
-                    <img src="../MEDIA/equipe.jpg" alt="">
-                </div>
-                <div class="card_info">
-                    <h3>Equipe</h3>
-                    <div id="boutton plus">
-                        <a href="../"><input type="submit" class="boutton_plus" value="Modifier equipe" /></a>
+                        <a href="../php/match_view_na.php"><input type="submit" class="boutton_plus" value="Match" /></a>
                     </div>
                 </div>
             </div>
