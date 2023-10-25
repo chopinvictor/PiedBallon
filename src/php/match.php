@@ -66,6 +66,19 @@ if($id_equipe<$id_adversaire){
 
 };
 
+
+if(isset($_POST['remplacement_equipe_deux'])){
+	if(!empty($_POST['temps_equipe_deux'])){
+		header("Location: ../php/match_remplacement.php?id_equipe=".$id_equipe_deux."&temps_jeux=".$_POST['temps_equipe_deux'] );
+	}
+}
+if(isset($_POST['send'])){
+	if(!empty($_POST['equipe_une'])){
+		header("Location: ../php/match_remplacement.php?id_equipe=".$id_equipe_une."&temps_jeux=".$_POST['temps_equipe_une'] );
+	}
+}
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -151,23 +164,23 @@ if($id_equipe<$id_adversaire){
 					<p class="action_equipe"><?php echo $nom_equipe_une ?></p>
 					<a href=<?php echo "match_add_goal.php?id_equipe_une=".$id_equipe_deux."&id_equipe_deux=".$id_equipe_une ?>><button class="btn_but">+</button></a>
 				</div>
+				<p>Remplacements</p>
 				<div class="action_remplacement">
+				<form action="" method="POST">
 					<div class="action_remplacement_equipe">
 						<div class="action_remplacement_equipe_container">
-							<p>Le numéro:</p>
-							<input min="0" max="99" class="input_number" type="number">
-							<p>remplace le numéro: </p>
-							<input min="0" max="99" class="input_number" type="number">
-							<p>Heure:</p>
-							<input class="date_remplacement" type="datetime-local">
+							<p>temps de jeux : </p>
+							<input name="equipe_une" min="0" max="99" class="input_number" type="number">
 						</div>
 						<div class="action_remplacement_equipe_container">
-							<button class="btn_remplacement"><svg class="svg_btn_remplacement">
+						<button name="send"  type="submit" class="btn_remplacement"><svg class="svg_btn_remplacement">
 									<use class="svg_nav_all" xlink:href="#svg_switch" />
 								</svg></button>
 						</div>
 					</div>
+				</form>
 				</div>
+				
 			</div>
 
 
@@ -177,22 +190,22 @@ if($id_equipe<$id_adversaire){
 					<p class="action_equipe"><?php echo $nom_equipe_deux ?></p>
 					<a href=<?php echo "match_add_goal.php?id_equipe_une=".$id_equipe_une."&id_equipe_deux=".$id_equipe_deux ?>><button class="btn_but">+</button></a>
 				</div>
+				<p>Remplacement</p>
 				<div class="action_remplacement">
+					<form action="" method="POST">
 					<div class="action_remplacement_equipe">
 						<div class="action_remplacement_equipe_container">
-							<p>Le numéro:</p>
-							<input min="0" max="99" cla ss="input_number" type="number">
-							<p>Remplace le numéro: </p>
-							<input min="0" max="99" class="input_number" type="number">
-							<p>Heure:</p>
-							<input class="date_remplacement" type="datetime-local">
+							<p>temps de jeux:</p>
+							
+							<input name="temps_equipe_deux" min="0" max="200" class="input_number" type="number">
 						</div>
 						<div class="action_remplacement_equipe_container">
-							<button class="btn_remplacement"><svg class="svg_btn_remplacement">
+							<a href=<?php ?>><button type="submit" name="remplacement_equipe_deux" class="btn_remplacement"><svg class="svg_btn_remplacement">
 									<use class="svg_nav_all" xlink:href="#svg_switch" />
-								</svg></button>
+								</svg></button></a>
 						</div>
 					</div>
+					</form>
 				</div>
 			</div>
 		</div>
