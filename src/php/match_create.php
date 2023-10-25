@@ -26,13 +26,16 @@ function create($db, $date_match, $lieu_match, $score_equipe_1, $score_equipe_2,
 	$return->closeCursor();
 }
 
-// if (
-// 	!empty($_POST['lieu_match']) && !empty($_POST['date_match']) && !empty($_POST['score_equipe_1']) && !empty($_POST['score_equipe_2']) && !empty($_POST['est_fini'])
-// ) {
-	$estFini = $_POST['est_fini'];
+if (isset($_POST['send'])) {
 
-	create($db, $_POST['date_match'], $_POST['lieu_match'], $_POST['score_equipe_1'], $_POST['score_equipe_2'], intval($estFini));
-// }
+	if (
+		!empty($_POST['lieu_match']) && !empty($_POST['date_match']) && !empty($_POST['score_equipe_1']) && !empty($_POST['score_equipe_2']) && !empty($_POST['est_fini'])
+	) {
+		$estFini = $_POST['est_fini'];
+
+		create($db, $_POST['date_match'], $_POST['lieu_match'], $_POST['score_equipe_1'], $_POST['score_equipe_2'], intval($estFini));
+	}
+}
 
 // header("Location: ../php/general.php");
 ?>
@@ -66,7 +69,7 @@ function create($db, $date_match, $lieu_match, $score_equipe_1, $score_equipe_2,
 			<input type="checkbox" name="est_fini" value="1" />
 		</div>
 
-		<input type="submit" class="" value="Créer" />
+		<button name="send" type="submit">Créer</button>
 
 	</form>
 
