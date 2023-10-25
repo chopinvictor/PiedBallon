@@ -59,10 +59,10 @@ $club= $getmatch->fetchAll(PDO::FETCH_OBJ);
         <div class="principal arbitre">
             <h2><?= "Equipes du club ".$lieu_club ?></h2>
             <?php
-                foreach($club as $Value) : ;
+                foreach($club as $Value) : 
                     $nombre_match = $Value->nb_match_joues;
                     $nom_equipe = $Value->nom_equipe;
-                    $id_equipe = $Value->id_equipe;
+                    $id_equipe = $Value->id_equipe ;
                     ?>
                    <div class="card_container">
                     <a href=<?php echo "../php/equipe_hub.php?id_equipe=".$id_equipe ?>><p class="card_number Division_number"><?= $nombre_match ?></p></a>

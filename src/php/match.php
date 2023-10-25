@@ -78,6 +78,17 @@ if(isset($_POST['send'])){
 	}
 }
 
+$query = "SELECT joueurs.nom, evenements.*, remplacements.id_remplacement, remplace.est_remplace
+FROM evenements
+INNER JOIN remplacements ON remplacements.id_evenement = evenements.id_evenement
+INNER JOIN remplace ON remplace.id_remplacement = remplacements.id_remplacement
+INNER JOIN joueurs ON joueurs.id_joueur = remplace.id_joueur
+WHERE id_match = ?";
+$getmatch = $db->prepare($query);
+$getmatch->execute([$id_match]);
+
+$remplacement= $getmatch->fetchAll(PDO::FETCH_OBJ);
+
 
 ?>
 <!DOCTYPE html>
@@ -88,6 +99,7 @@ if(isset($_POST['send'])){
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Match</title>
 	<link rel="stylesheet" href="../css/match.css">
+	<link rel="stylesheet" href="../css/participant.css">
 </head>
 
 
@@ -209,7 +221,27 @@ if(isset($_POST['send'])){
 				</div>
 			</div>
 		</div>
-
+	<div>
+		<h2 style="margin-left: 170px;">les remplacements</h2>
+		<?php
+		$count = 0;
+            foreach($remplacement as $Value) : ;
+			$count=$count +1;
+				$nom=$Value->nom;
+				if($Value->est_remplace == 1){
+					$remplace = "Est remplacé";
+				}else{
+					$remplace ="Remplace";
+				};
+				$temps = strval($Value->horodatage)
+				
+                    ?>
+                    <div style="margin-left: 170px;" class="card_container">
+                        <p class="card_number Division_number">1</p>
+                        <p class="card_info Division_name"><?= $nom." ".$remplace." à la ".$temps."min" ?> </p>
+                    </div>                
+            <?php endforeach ?>
+	</div>
 	</section>
 </body>
 
