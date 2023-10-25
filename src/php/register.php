@@ -4,13 +4,12 @@ require_once('fonctions.php');
 //var_dump($_POST);
 
 session_start();
- 
+
 
 
 if(isset($_POST['send'])){
-    var_dump($_POST['send']);
     if(!empty($_POST['prenom']) && !empty($_POST['nom']) && !empty($_POST['mdp']) && ($_POST['mdp2'] == $_POST['mdp']) && !empty($_POST['email']) ){
-        // strip_tags pour enlever le code html sql etc etc 
+        // strip_tags pour enlever le code html sql etc etc
         $prenom = strip_tags($_POST['prenom']);
         $nom = strip_tags($_POST['nom']);
         $email = strip_tags($_POST['email']);
@@ -19,10 +18,10 @@ if(isset($_POST['send'])){
         $exist = $db->prepare('SELECT * FROM utilisateurs WHERE adresse_mail = ?');
         $exist->execute(array($email));
 
-        if($exist->rowCount()==0){  
+        if($exist->rowCount()==0){
             $insertUser = $db-> prepare('INSERT INTO utilisateurs(nom , prenom, mot_de_passe, adresse_mail)VALUES(?,?,?,?)');
             $insertUser->execute(array($nom,$prenom,$mdp,$email));
-            
+
             $getUser = $db->prepare('SELECT * FROM utilisateurs WHERE nom = ? AND prenom = ? AND mot_de_passe = ? AND adresse_mail = ?');
             $getUser->execute(array($nom,$prenom,$mdp,$email));
 

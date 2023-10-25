@@ -21,7 +21,7 @@ if ($num > 0) {
 	while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
 		extract($row);
 		$equipe_item = [
-			'id' => $id_equipe,
+			'id_equipe' => $id_equipe,
 			'nb_match_joues' => $nb_match_joues,
 			'nb_match_gagnes' => $nb_match_gagnes,
 			'nb_match_egalites' => $nb_match_egalites,
@@ -30,6 +30,7 @@ if ($num > 0) {
 			'entraineur_adjoint_nom' => $entraineur_adjoint_nom,
 			'entraineur_adjoint_prenom' => $entraineur_adjoint_prenom,
 			'id_club' => $id_club,
+			'nom_club' => $nom_club
 		];
 		array_push($equipe_arr['data'], $equipe_item);
 	}
