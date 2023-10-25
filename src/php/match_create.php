@@ -13,6 +13,7 @@ function create($db, $date_match, $lieu_match, $score_equipe_1, $score_equipe_2,
 
 	$return = $db->prepare($query);
 
+
 	$return->execute(
 		array(
 			$date_match,
@@ -27,7 +28,6 @@ function create($db, $date_match, $lieu_match, $score_equipe_1, $score_equipe_2,
 }
 
 if (isset($_POST['send'])) {
-
 	if (
 		!empty($_POST['lieu_match']) && !empty($_POST['date_match']) && !empty($_POST['score_equipe_1']) && !empty($_POST['score_equipe_2']) && !empty($_POST['est_fini'])
 	) {
@@ -36,6 +36,7 @@ if (isset($_POST['send'])) {
 		create($db, $_POST['date_match'], $_POST['lieu_match'], $_POST['score_equipe_1'], $_POST['score_equipe_2'], intval($estFini));
 	}
 }
+
 
 // header("Location: ../php/general.php");
 ?>
@@ -53,7 +54,7 @@ if (isset($_POST['send'])) {
 <body>
 	<h1>Créer un match</h1>
 
-	<form id="formModifier" action="" method="POST" class="form">
+	<form id="formModifier" action=" " method="POST" class="form">
 
 		<label class="form-row">Lieu du match</label>
 		<input type="text" name="lieu_match" placeholder="" required class="" />
