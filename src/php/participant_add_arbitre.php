@@ -23,13 +23,6 @@ $arbitre= $getmatch->fetchAll(PDO::FETCH_OBJ);
 
 
 
-
-
-
-if(empty($_SESSION)){
-    header("Location: ../php/login.php");
-}
-
 if (isset($_POST['arbitre_send_modif'])) {
 
     if(!empty($_POST['arbitre_nom_modif'])&& !empty($_POST['arbitre_prenom_modif']) ){
