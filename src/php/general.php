@@ -37,7 +37,7 @@ require_once('bdd.php');
 
 $query = "SELECT * FROM matchs WHERE id_match =? ";
 $getmatch = $db->prepare($query);
-$getmatch->execute([2]);
+$getmatch->execute([$id_match]);
 
 $currentmatch= $getmatch->fetchAll(PDO::FETCH_OBJ);
 
